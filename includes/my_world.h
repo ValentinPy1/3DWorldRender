@@ -25,7 +25,7 @@ typedef struct world_s {
     sfVector2f dim;
     sfVector2f pos;
     sfVector2f angle;
-    int size;
+    float size;
 } world_t;
 
 typedef struct winbase_s {
@@ -46,5 +46,6 @@ void draw_y_lines(winbase_t *, sfVector2f **);
 sfVector2f **project_map(winbase_t *);
 world_t setup_world(void);
 void kbd_input(winbase_t *);
+void destroy_projmap(sfVector2f *, sfVector2f **);
 
 #endif

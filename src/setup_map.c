@@ -29,5 +29,15 @@ int **setup_map(int width, int height)
             map[y][x] = 0;
         }
     }
+    map[4][2] = 1;
+    map[0][5] = -1;
     return map;
+}
+
+void destroy_projmap(sfVector2f *dim, sfVector2f **projmap)
+{
+    int i;
+    for (i = 0; i < dim->y; i++)
+        free(projmap[i]);
+    free(projmap);
 }

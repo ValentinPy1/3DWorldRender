@@ -10,9 +10,11 @@
 void launch(void)
 {
     winbase_t *wb = create_winbase();
-    sfVector2f **projmap = project_map(wb);
+    sfVector2f **projmap;
     while (sfRenderWindow_isOpen(wb->window)) {
+        projmap = project_map(wb);
         draw_all(wb, projmap);
+        destroy_projmap(&wb->world.dim, projmap);
         handle_event(wb);
     }
     destroy_winbase(wb);

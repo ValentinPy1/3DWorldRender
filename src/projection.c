@@ -7,6 +7,18 @@
 
 #include "my_world.h"
 
+sfVector2f scale_point(winbase_t *wb, sfVector2f **map, int y, int x)
+{
+    sfVector2f scaledpoint;
+
+    scaledpoint.x = map[y][x].x * wb->world.size / 
+    wb->world.dim.x + wb->world.pos.x;
+    scaledpoint.y = map[y][x].y * wb->world.size / 
+    wb->world.dim.y + wb->world.pos.y;
+
+    return scaledpoint;
+}
+
 sfVector2f project_point(sfVector3f point_3d, sfVector2f angle)
 {
     sfVector2f point_2d;
@@ -46,8 +58,7 @@ void draw_x_lines(winbase_t *wb, sfVector2f **map)
     for (y = 0; y < wb->world.dim.x; y++) {
         vertex_array = sfVertexArray_create();
         for (x = 0; x < wb->world.dim.y; x++) {
-            scaledpoint.x = map[y][x].x * wb->world.size / wb->world.dim.x + wb->world.pos.x;
-            scaledpoint.y = map[y][x].y * wb->world.size / wb->world.dim.y + wb->world.pos.y;
+            scaledpoint = scale_point(wb, map, y, x);
             vertex = (sfVertex){scaledpoint, sfWhite};
             sfVertexArray_append(vertex_array, vertex);
         }
@@ -67,8 +78,7 @@ void draw_y_lines(winbase_t *wb, sfVector2f **map)
     for (x = 0; x < wb->world.dim.x; x++) {
         vertex_array = sfVertexArray_create();
         for (y = 0; y < wb->world.dim.y; y++) {
-            scaledpoint.x = map[y][x].x * wb->world.size / wb->world.dim.x + wb->world.pos.x;
-            scaledpoint.y = map[y][x].y * wb->world.size / wb->world.dim.y + wb->world.pos.y;
+            scaledpoint = scale_point(wb, map, y, x);
             vertex = (sfVertex){scaledpoint, sfWhite};
             sfVertexArray_append(vertex_array, vertex);
         }

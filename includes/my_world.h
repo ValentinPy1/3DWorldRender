@@ -9,6 +9,7 @@
     #define _MY_RADAR_
     #include <SFML/Graphics.h>
     #include <time.h>
+    #include <SFML/Window/Mouse.h>
     #include <math.h>
     #include <sys/types.h>
     #include <sys/stat.h>
@@ -22,7 +23,7 @@
     #define PI 3.14159265359
 
 typedef struct world_s {
-    sfVector2f dim;
+    sfVector2i dim;
     sfVector2f pos;
     sfVector2f angle;
     float size;

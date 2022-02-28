@@ -13,7 +13,7 @@ world_t setup_world(void)
     world.pos = (sfVector2f){WINWIDTH / 2, WINHEIGHT / 2};
     world.angle = (sfVector2f){15, 15};
     world.size = 400;
-    world.dim = (sfVector2f){6, 6};
+    world.dim = (sfVector2i){6, 6};
     return world;
 }
 

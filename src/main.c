@@ -13,6 +13,7 @@ void launch(void)
     sfVector2f **projmap;
     while (sfRenderWindow_isOpen(wb->window)) {
         projmap = project_map(wb);
+        handle_mouse(wb);
         draw_all(wb, projmap);
         destroy_projmap(&wb->world.dim, projmap);
         handle_event(wb);

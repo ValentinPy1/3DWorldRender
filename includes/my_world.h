@@ -9,6 +9,7 @@
     #define _MY_RADAR_
     #include <SFML/Graphics.h>
     #include <time.h>
+    #include <SFML/Window/Mouse.h>
     #include <math.h>
     #include <sys/types.h>
     #include <sys/stat.h>
@@ -34,7 +35,7 @@ typedef struct winbase_s {
     int **height_map;
     world_t world;
 } winbase_t;
-
+sfVector2f scale_point(winbase_t *wb, sfVector2f **map, int y, int x);
 winbase_t *create_winbase(void);
 void handle_event(winbase_t *);
 sfRenderWindow *create_window(void);

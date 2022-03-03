@@ -22,7 +22,7 @@
     #define PI 3.14159265359
 
 typedef struct world_s {
-    sfVector2f dim;
+    sfVector2i dim;
     sfVector2f pos;
     sfVector2f angle;
     float size;
@@ -46,6 +46,6 @@ void draw_y_lines(winbase_t *, sfVector2f **);
 sfVector2f **project_map(winbase_t *);
 world_t setup_world(void);
 void kbd_input(winbase_t *);
-void destroy_projmap(sfVector2f *, sfVector2f **);
+void destroy_projmap(sfVector2i *, sfVector2f **);
 
 #endif

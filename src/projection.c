@@ -10,8 +10,8 @@
 sfVector2f project_point(sfVector3f point_3d, sfVector2f angle)
 {
     sfVector2f point_2d;
-    point_2d.x = cos(angle.x) * (point_3d.x - point_3d.y);
-    point_2d.y = sin(angle.y) * (point_3d.y + point_3d.x) - point_3d.z;
+    point_2d.x = cos(angle.x) * point_3d.x - sin(angle.x) * point_3d.y;
+    point_2d.y = sin(angle.y) * point_3d.x + sin(angle.y) * point_3d.y - point_3d.z;
     return point_2d;
 }
 
@@ -24,12 +24,16 @@ sfVector2f **project_map(winbase_t *wb)
     sfVector2f **projmap = malloc(height * sizeof(sfVector2f *));
     sfVector2f angle;
     sfVector3f point_3d;
+    int realx;
+    int realy;
     angle.x = wb->world.angle.x * PI / 180;
     angle.y = wb->world.angle.y * PI / 180;
     for (y = 0; y < height; y++) {
         projmap[y] = malloc(width * sizeof(sfVector2f));
         for (x = 0; x < width; x++) {
-            point_3d = (sfVector3f){x, y, wb->height_map[y][x]};
+            realx = x - wb->world.dim.x / 2;
+            realy = y - wb->world.dim.y / 2;
+            point_3d = (sfVector3f){realx, realy, wb->height_map[y][x]};
             projmap[y][x] = project_point(point_3d, angle);
         }
     }

@@ -13,7 +13,7 @@ world_t setup_world(void)
     world.pos = (sfVector2f){WINWIDTH / 2, WINHEIGHT / 2};
     world.angle = (sfVector2f){15, 15};
     world.size = 400;
-    world.dim = (sfVector2f){6, 6};
+    world.dim = (sfVector2i){10, 10};
     return world;
 }
 
@@ -34,7 +34,7 @@ int **setup_map(int width, int height)
     return map;
 }
 
-void destroy_projmap(sfVector2f *dim, sfVector2f **projmap)
+void destroy_projmap(sfVector2i *dim, sfVector2f **projmap)
 {
     int i;
     for (i = 0; i < dim->y; i++)

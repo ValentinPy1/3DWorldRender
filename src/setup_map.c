@@ -13,24 +13,36 @@ world_t setup_world(void)
     world.pos = (sfVector2f){WINWIDTH / 2, WINHEIGHT / 2};
     world.angle = (sfVector2f){15, 15};
     world.size = 400;
-    world.dim = (sfVector2i){10, 10};
+    world.dim = (sfVector2i){50, 50};
     return world;
 }
 
-int **setup_map(int width, int height)
+double get_random(void)
 {
-    int **map = malloc(width * sizeof(int *));
+    return (double)rand() / (double)RAND_MAX;
+}
+
+double **setup_map(int width, int height)
+{
+    double **map = malloc(width * sizeof(double *));
     int y;
     int x;
+    double sin1x_off = get_random() * 10;
+    double sin2x_off = get_random() * 10;
+    double sin3x_off = get_random() * 10;
+    double sin1y_off = get_random() * 10;
+    double sin2y_off = get_random() * 10;
+    double sin3y_off = get_random() * 10;
 
     for (y = 0; y < height; y++) {
-        map[y] = malloc(width * sizeof(int));
+        map[y] = malloc(width * sizeof(double));
         for (x = 0; x < width; x++) {
-            map[y][x] = 0;
+            map[y][x] = sin(sin1x_off + x / 8) * 4 + sin(sin2x_off + x / 4) *\
+            2 + sin(sin3x_off + x / 2) * 1 + sin(sin1y_off + y / 8) * 4 +\
+            sin(sin2y_off + y / 4) * 2 + sin(sin3y_off + y / 2) * 1 +\
+            get_random() - get_random();
         }
     }
-    map[4][2] = 1;
-    map[0][5] = -1;
     return map;
 }
 

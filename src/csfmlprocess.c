@@ -33,6 +33,7 @@ void handle_event(winbase_t *wb)
 winbase_t *create_winbase(void)
 {
     winbase_t *wb = malloc(sizeof(winbase_t));
+    srand(time(NULL));
     wb->window = create_window();
     wb->world = setup_world();
     wb->height_map = setup_map(wb->world.dim.x, wb->world.dim.y);

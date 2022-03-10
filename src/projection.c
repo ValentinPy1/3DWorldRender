@@ -11,9 +11,9 @@ sfVector2f scale_point(winbase_t *wb, sfVector2f **map, int y, int x)
 {
     sfVector2f scaledpoint;
 
-    scaledpoint.x = map[y][x].x * wb->world.size / 
+    scaledpoint.x = map[y][x].x * wb->world.size /
     wb->world.dim.x + wb->world.pos.x;
-    scaledpoint.y = map[y][x].y * wb->world.size / 
+    scaledpoint.y = map[y][x].y * wb->world.size /
     wb->world.dim.y + wb->world.pos.y;
 
     return scaledpoint;
@@ -59,11 +59,15 @@ void draw_x_lines(winbase_t *wb, sfVector2f **map)
     sfVector2f scaledpoint;
     int x;
     int y;
+    sfColor color;
+    double vh;
     for (y = 0; y < wb->world.dim.x; y++) {
         vertex_array = sfVertexArray_create();
         for (x = 0; x < wb->world.dim.y; x++) {
             scaledpoint = scale_point(wb, map, y, x);
-            vertex = (sfVertex){scaledpoint, sfWhite};
+            vh = wb->height_map[y][x] * 10;
+            color = sfColor_fromRGB(122 - vh, 122, 122 + vh);
+            vertex = (sfVertex){scaledpoint, color};
             sfVertexArray_append(vertex_array, vertex);
         }
         sfVertexArray_setPrimitiveType(vertex_array, sfLinesStrip);
@@ -79,11 +83,15 @@ void draw_y_lines(winbase_t *wb, sfVector2f **map)
     sfVector2f scaledpoint;
     int x;
     int y;
+    sfColor color;
+    double vh;
     for (x = 0; x < wb->world.dim.x; x++) {
         vertex_array = sfVertexArray_create();
         for (y = 0; y < wb->world.dim.y; y++) {
             scaledpoint = scale_point(wb, map, y, x);
-            vertex = (sfVertex){scaledpoint, sfWhite};
+            vh = wb->height_map[y][x] * 10;
+            color = sfColor_fromRGB(122 - vh, 122, 122 + vh);
+            vertex = (sfVertex){scaledpoint, color};
             sfVertexArray_append(vertex_array, vertex);
         }
         sfVertexArray_setPrimitiveType(vertex_array, sfLinesStrip);

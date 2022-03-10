@@ -33,16 +33,17 @@ typedef struct world_s {
 typedef struct winbase_s {
     sfRenderWindow *window;
     sfEvent event;
-    int **height_map;
+    double **height_map;
     world_t world;
 } winbase_t;
+
 sfVector2f scale_point(winbase_t *wb, sfVector2f **map, int y, int x);
 winbase_t *create_winbase(void);
 void handle_event(winbase_t *);
 sfRenderWindow *create_window(void);
 void destroy_winbase(winbase_t *);
 void draw_all(winbase_t *, sfVector2f **);
-int **setup_map(int, int);
+double **setup_map(int, int);
 void draw_x_lines(winbase_t *, sfVector2f **);
 void draw_y_lines(winbase_t *, sfVector2f **);
 sfVector2f **project_map(winbase_t *);

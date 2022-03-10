@@ -65,8 +65,8 @@ void draw_x_lines(winbase_t *wb, sfVector2f **map)
         vertex_array = sfVertexArray_create();
         for (x = 0; x < wb->world.dim.y; x++) {
             scaledpoint = scale_point(wb, map, y, x);
-            vh = wb->height_map[y][x] * 2;
-            color = sfColor_fromRGB(255 - vh, 50, vh);
+            vh = wb->height_map[y][x] * 10;
+            color = sfColor_fromRGB(122 - vh, 122, 122 + vh);
             vertex = (sfVertex){scaledpoint, color};
             sfVertexArray_append(vertex_array, vertex);
         }
@@ -89,8 +89,8 @@ void draw_y_lines(winbase_t *wb, sfVector2f **map)
         vertex_array = sfVertexArray_create();
         for (y = 0; y < wb->world.dim.y; y++) {
             scaledpoint = scale_point(wb, map, y, x);
-            vh = wb->height_map[y][x] * 2;
-            color = sfColor_fromRGB(255 - vh, 50, vh);
+            vh = wb->height_map[y][x] * 10;
+            color = sfColor_fromRGB(122 - vh, 122, 122 + vh);
             vertex = (sfVertex){scaledpoint, color};
             sfVertexArray_append(vertex_array, vertex);
         }

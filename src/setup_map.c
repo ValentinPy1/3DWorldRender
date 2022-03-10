@@ -40,7 +40,7 @@ double **setup_map(int width, int height)
             map[y][x] = sin(sin1x_off + x / 8) * 4 + sin(sin2x_off + x / 4) *\
             2 + sin(sin3x_off + x / 2) * 1 + sin(sin1y_off + y / 8) * 4 +\
             sin(sin2y_off + y / 4) * 2 + sin(sin3y_off + y / 2) * 1 +\
-            get_random();
+            get_random() - get_random();
         }
     }
     return map;

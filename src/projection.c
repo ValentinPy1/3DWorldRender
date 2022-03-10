@@ -23,7 +23,7 @@ sfVector2f project_point(sfVector3f point_3d, sfVector2f angle)
 {
     sfVector2f point_2d;
     point_2d.x = cos(angle.x) * point_3d.x - sin(angle.x) * point_3d.y;
-    point_2d.y = sin(angle.y) * point_3d.x + sin(angle.y) * point_3d.y - point_3d.z * 5;
+    point_2d.y = sin(angle.y) * point_3d.x + sin(angle.y) * point_3d.y - point_3d.z;
     return point_2d;
 }
 
@@ -65,8 +65,8 @@ void draw_x_lines(winbase_t *wb, sfVector2f **map)
         vertex_array = sfVertexArray_create();
         for (x = 0; x < wb->world.dim.y; x++) {
             scaledpoint = scale_point(wb, map, y, x);
-            vh = wb->height_map[y][x];
-            color = sfColor_fromRGB(vh, 50, 255 - vh);
+            vh = wb->height_map[y][x] * 2;
+            color = sfColor_fromRGB(255 - vh, 50, vh);
             vertex = (sfVertex){scaledpoint, color};
             sfVertexArray_append(vertex_array, vertex);
         }
@@ -89,8 +89,8 @@ void draw_y_lines(winbase_t *wb, sfVector2f **map)
         vertex_array = sfVertexArray_create();
         for (y = 0; y < wb->world.dim.y; y++) {
             scaledpoint = scale_point(wb, map, y, x);
-            vh = wb->height_map[y][x];
-            color = sfColor_fromRGB(vh, 50, 255 - vh);
+            vh = wb->height_map[y][x] * 2;
+            color = sfColor_fromRGB(255 - vh, 50, vh);
             vertex = (sfVertex){scaledpoint, color};
             sfVertexArray_append(vertex_array, vertex);
         }

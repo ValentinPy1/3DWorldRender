@@ -24,6 +24,7 @@
 
 typedef struct world_s {
     sfVector2i dim;
+    sfVector2i coord;
     sfVector2f pos;
     sfVector2f angle;
     float size;

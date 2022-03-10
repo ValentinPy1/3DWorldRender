@@ -17,14 +17,32 @@ void update_map(winbase_t *wb, double **height_map)
         }
     }
 }
-void switch_map(winbase_t *wb, double **height_map)
+
+void update_colors(winbase_t *wb, w_colors_t colors)
+{
+    wb->world.colors.high.r = wb->world.colors.high.r * 0.95 + colors.high.r * 0.05;
+    wb->world.colors.high.g = wb->world.colors.high.g * 0.95 + colors.high.g * 0.05;
+    wb->world.colors.high.b = wb->world.colors.high.b * 0.95 + colors.high.b * 0.05;
+    wb->world.colors.low.r = wb->world.colors.low.r * 0.95 + colors.low.r * 0.05;
+    wb->world.colors.low.g = wb->world.colors.low.g * 0.95 + colors.low.g * 0.05;
+    wb->world.colors.low.b = wb->world.colors.low.b * 0.95 + colors.low.b * 0.05;
+
+}
+
+void switch_map(winbase_t *wb)
 {
     int i;
     sfVector2f **projmap;
+    double **newmap = setup_map(wb->world.dim.x, wb->world.dim.y);;
+    w_colors_t colors = setup_color();
     for (i = 0; i < 50; i++) {
-        update_map(wb, height_map);
+        update_map(wb, newmap);
+        update_colors(wb, colors);
         projmap = project_map(wb);
         draw_all(wb, projmap);
         destroy_projmap(&wb->world.dim, projmap);
     }
+    for (i = 0; newmap[i] != NULL; i++)
+        free(newmap[i]);
+    free(newmap);
 }

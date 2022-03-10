@@ -59,6 +59,6 @@ void kbd_input(winbase_t *);
 void destroy_projmap(sfVector2i *, sfVector2f **);
 w_colors_t setup_color(void);
 sfColor build_color(w_colors_t, double vh);
-void switch_map(winbase_t *wb, double **height_map);
+void switch_map(winbase_t *wb);
 
 #endif

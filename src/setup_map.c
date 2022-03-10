@@ -37,12 +37,12 @@ double **setup_map(int width, int height)
     double **map = malloc((height + 1) * sizeof(double *));
     int y;
     int x;
-    double sin1x_off = rdm() * 10;
-    double sin2x_off = rdm() * 10;
-    double sin3x_off = rdm() * 10;
-    double sin1y_off = rdm() * 10;
-    double sin2y_off = rdm() * 10;
-    double sin3y_off = rdm() * 10;
+    double sin1x_off = rdm() * 100;
+    double sin2x_off = rdm() * 100;
+    double sin3x_off = rdm() * 100;
+    double sin1y_off = rdm() * 100;
+    double sin2y_off = rdm() * 100;
+    double sin3y_off = rdm() * 100;
     for (y = 0; y < height; y++) {
         map[y] = malloc(width * sizeof(double));
         for (x = 0; x < width; x++) {

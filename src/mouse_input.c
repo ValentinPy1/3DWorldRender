@@ -16,14 +16,14 @@ int close_d(int num1, float num2, int distance)
 
 void adjust_points(winbase_t *wb, sfVector2f scaledpoint, sfVector2i mouse_pos)
 {
-    int dist = 100;
+    int dist = 10;
     int y = wb->coord.y;
     int x = wb->coord.x;
 
+    //printf("%.3f %.3f\n%d %d\n", scaledpoint.y, scaledpoint.x, y, x);
     if (close_d(mouse_pos.y, scaledpoint.y, dist) == 1 && close_d(mouse_pos.x,
     scaledpoint.x, dist) == 1) {
-        wb->height_map[y][x] += 0.25;
-        printf("y:%d  x:%d\n",y, x);
+        wb->height_map[y][x] += 1;
     }
 }
 
@@ -37,7 +37,8 @@ int button)
 
     for (int i = 0; i <= lines; i++) {
         for (int j = 0; j <= cols; j++) {
-            scale_point(wb, wb->height_map, i, j);
+            scaledpoint = scale_point(wb, wb->height_map, i, j);
+            
             wb->coord.y = i;
             wb->coord.x = j;
             adjust_points(wb, scaledpoint, mouse_pos);

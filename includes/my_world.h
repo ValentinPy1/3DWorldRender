@@ -22,11 +22,18 @@
     #define WINBPP 32
     #define PI 3.14159265359
 
+typedef struct w_colors_s {
+    sfColor high;
+    sfColor low;
+    int max;
+} w_colors_t;
+
 typedef struct world_s {
     sfVector2i dim;
     sfVector2f pos;
     sfVector2f angle;
     float size;
+    w_colors_t colors;
 } world_t;
 
 typedef struct winbase_s {
@@ -50,5 +57,7 @@ sfVector2f **project_map(winbase_t *);
 world_t setup_world(void);
 void kbd_input(winbase_t *);
 void destroy_projmap(sfVector2i *, sfVector2f **);
+w_colors_t setup_color(void);
+sfColor build_color(w_colors_t, double vh);
 
 #endif

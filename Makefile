@@ -13,6 +13,7 @@ SRC	=	$(SRCPATH)main.c	\
 		$(SRCPATH)projection.c	\
 		$(SRCPATH)manage_input.c	\
 		$(SRCPATH)mouse_input.c	\
+		$(SRCPATH)colors.c	\
 
 NAME	=	my_world
 

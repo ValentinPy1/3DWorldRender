@@ -24,7 +24,6 @@
 
 typedef struct world_s {
     sfVector2i dim;
-    sfVector2i coord;
     sfVector2f pos;
     sfVector2f angle;
     float size;
@@ -33,6 +32,7 @@ typedef struct world_s {
 typedef struct winbase_s {
     sfRenderWindow *window;
     sfEvent event;
+    sfVector2i coord;
     double **height_map;
     world_t world;
 } winbase_t;

@@ -34,7 +34,7 @@ world_t setup_world(void)
 
 double **setup_map(int width, int height)
 {
-    double **map = malloc(width * sizeof(double *));
+    double **map = malloc((height + 1) * sizeof(double *));
     int y;
     int x;
     double sin1x_off = rdm() * 10;
@@ -53,6 +53,7 @@ double **setup_map(int width, int height)
             rdm() - rdm();
         }
     }
+    map[y] = NULL;
     return map;
 }
 

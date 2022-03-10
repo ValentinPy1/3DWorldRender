@@ -49,6 +49,7 @@ void pos_input(winbase_t *wb)
 
 void size_input(winbase_t *wb)
 {
+    int i;
     switch (wb->event.key.code) {
         case (sfKeyP):
             wb->world.size *= 1.03;
@@ -56,6 +57,12 @@ void size_input(winbase_t *wb)
         case (sfKeyM):
             wb->world.size /= 1.03;
             break;
+        case (sfKeyR):
+            for (i = 0; wb->height_map[i] != NULL; i++)
+                free(wb->height_map[i]);
+            free(wb->height_map);
+            wb->height_map = setup_map(wb->world.dim.x, wb->world.dim.y);
+            wb->world.colors = setup_color();
         default:
             break;
     }

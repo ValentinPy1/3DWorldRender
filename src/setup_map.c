@@ -12,7 +12,7 @@ world_t setup_world(void)
     world_t world;
     world.pos = (sfVector2f){WINWIDTH / 2, WINHEIGHT / 2};
     world.angle = (sfVector2f){15, 15};
-    world.size = 400;
+    world.size = 800;
     world.dim = (sfVector2i){50, 50};
     return world;
 }
@@ -33,7 +33,6 @@ double **setup_map(int width, int height)
     double sin1y_off = get_random() * 10;
     double sin2y_off = get_random() * 10;
     double sin3y_off = get_random() * 10;
-
     for (y = 0; y < height; y++) {
         map[y] = malloc(width * sizeof(double));
         for (x = 0; x < width; x++) {

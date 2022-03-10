@@ -7,7 +7,8 @@
 
 #include "my_world.h"
 
-void check_points(winbase_t *wb, sfVector2i mouse_pos, sfVector2f **projmap, 
+/*
+void check_points(winbase_t *wb, sfVector2i mouse_pos, sfVector2f **projmap,
 int button)
 {
     int lines = wb->world.dim.y;
@@ -29,7 +30,7 @@ void handle_mouse(winbase_t *wb, sfVector2f **projmap)
 {
     sfVector2i mouse_pos;
     sfBool right_button, left_button;
-    
+
     mouse_pos = sfMouse_getPositionRenderWindow(wb->window);
     left_button = sfMouse_isButtonPressed(sfMouseLeft);
     right_button = sfMouse_isButtonPressed(sfMouseRight);
@@ -37,3 +38,4 @@ void handle_mouse(winbase_t *wb, sfVector2f **projmap)
         check_points(wb, mouse_pos, projmap, 1);
     return;
 }
+*/

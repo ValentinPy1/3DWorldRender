@@ -25,7 +25,7 @@ void print_help()
     my_putstr("help\n");
 }
 
-int main(int ac, char **av)
+int main(void)
 {
     launch();
     return 0;

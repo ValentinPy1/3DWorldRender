@@ -7,6 +7,26 @@
 
 #include "my_world.h"
 
+int close_d(int num1, float num2, int distance)
+{
+    if (num1 + distance > num2 && num1 - distance < num2)
+        return 1;
+    return 0;
+}
+
+void adjust_points(winbase_t *wb, sfVector2f scaledpoint, sfVector2i mouse_pos)
+{
+    int dist = 100;
+    int y = wb->coord.y;
+    int x = wb->coord.x;
+
+    if (close_d(mouse_pos.y, scaledpoint.y, dist) == 1 && close_d(mouse_pos.x,
+    scaledpoint.x, dist) == 1) {
+        wb->height_map[y][x] += 0.25;
+        printf("y:%d  x:%d\n",y, x);
+    }
+}
+
 void check_points(winbase_t *wb, sfVector2i mouse_pos, sfVector2f **projmap, 
 int button)
 {
@@ -20,7 +40,7 @@ int button)
             scale_point(wb, wb->height_map, i, j);
             wb->coord.y = i;
             wb->coord.x = j;
-            //adjust_points(wb, scaledpoint, mouse_pos);
+            adjust_points(wb, scaledpoint, mouse_pos);
         }
     }
 }

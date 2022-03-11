@@ -27,7 +27,7 @@ int button)
     }
 }
 
-void check_points(winbase_t *wb, sfVector2i mouse_pos, sfVector2f **projmap, 
+void check_points(winbase_t *wb, sfVector2i mouse_pos, sfVector2f **projmap,
 int button)
 {
     int lines = wb->world.dim.y;

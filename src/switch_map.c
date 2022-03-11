@@ -35,7 +35,7 @@ void switch_map(winbase_t *wb)
     sfVector2f **projmap;
     double **newmap = setup_map(wb->world.dim.x, wb->world.dim.y);;
     w_colors_t colors = setup_color();
-    for (i = 0; i < 50; i++) {
+    for (i = 0; i < 43; i++) {
         update_map(wb, newmap);
         update_colors(wb, colors);
         projmap = project_map(wb);

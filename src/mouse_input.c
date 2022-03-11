@@ -7,31 +7,27 @@
 
 #include "my_world.h"
 
-
-/*
-void check_points(winbase_t *wb, sfVector2i mouse_pos, sfVector2f **projmap,
 int close_d(int num1, float num2, int distance)
 {
-    if (num1 + distance > num2 && num1 - distance < num2)
+    if (num1 + distance >= num2 && num1 - distance <= num2)
         return 1;
     return 0;
 }
 
-void adjust_points(winbase_t *wb, sfVector2f scaledpoint, sfVector2i mouse_pos)
+void adjust_points(winbase_t *wb, sfVector2f scaledpoint, sfVector2i mouse_pos,
+int button)
 {
     int dist = 10;
     int y = wb->coord.y;
     int x = wb->coord.x;
 
-    //printf("%.3f %.3f\n%d %d\n", scaledpoint.y, scaledpoint.x, y, x);
     if (close_d(mouse_pos.y, scaledpoint.y, dist) == 1 && close_d(mouse_pos.x,
     scaledpoint.x, dist) == 1) {
-        wb->height_map[y][x] += 1;
+        wb->height_map[y][x] += (1 + button * -1);
     }
 }
 
-void check_points(winbase_t *wb, sfVector2i mouse_pos, sfVector2f **projmap,
->>>>>>> 0dea035b226eeea7a64ca3615bef357c14ed2716
+void check_points(winbase_t *wb, sfVector2i mouse_pos, sfVector2f **projmap, 
 int button)
 {
     int lines = wb->world.dim.y;
@@ -39,12 +35,12 @@ int button)
     sfVector2i point_pos;
     sfVector2f scaledpoint;
 
-    for (int i = 0; i <= lines; i++) {
-        for (int j = 0; j <= cols; j++) {
-            scaledpoint = scale_point(wb, wb->height_map, i, j);
+    for (int i = 0; i < lines; i++) {
+        for (int j = 0; j < cols; j++) {
+            scaledpoint = scale_point(wb, projmap, i, j);
             wb->coord.y = i;
             wb->coord.x = j;
-            adjust_points(wb, scaledpoint, mouse_pos);
+            adjust_points(wb, scaledpoint, mouse_pos, button);
         }
     }
 }
@@ -58,7 +54,8 @@ void handle_mouse(winbase_t *wb, sfVector2f **projmap)
     left_button = sfMouse_isButtonPressed(sfMouseLeft);
     right_button = sfMouse_isButtonPressed(sfMouseRight);
     if (left_button == sfTrue)
+        check_points(wb, mouse_pos, projmap, 0);
+    if (right_button == sfTrue)
         check_points(wb, mouse_pos, projmap, 1);
     return;
 }
-*/

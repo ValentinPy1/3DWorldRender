@@ -56,11 +56,15 @@ void size_input(winbase_t *wb)
         case (sfKeyM):
             wb->world.size /= 1.03;
             break;
-        case (sfKeyR):
-            switch_map(wb);
         default:
             break;
     }
+}
+
+void reset_input(winbase_t *wb)
+{
+    if (wb->event.key.code == (sfKeyR))
+        switch_map(wb);
 }
 
 void kbd_input(winbase_t *wb)
@@ -68,4 +72,5 @@ void kbd_input(winbase_t *wb)
     angle_input(wb);
     pos_input(wb);
     size_input(wb);
+    reset_input(wb);
 }

@@ -7,11 +7,6 @@
 
 #include "my_world.h"
 
-double rdm(void)
-{
-    return (double)rand() / (double)RAND_MAX;
-}
-
 w_colors_t setup_color(void)
 {
     w_colors_t colors;
@@ -19,6 +14,23 @@ w_colors_t setup_color(void)
     colors.low = sfColor_fromRGB(rdm() * 255, rdm() * 255, rdm() * 255);
     colors.max = 255;
     return colors;
+}
+
+sin_t *setup_sinlist(int n)
+{
+    sin_t *sin = malloc((n + 1) * sizeof(sin_t));
+    int i;
+    float off;
+    float peak = 8;
+    float period = 16;
+    for (i = 0; i < n; i++) {
+        off = rdm() * 100;
+        sin[i] = (sin_t){off, peak, period};
+        peak /= 0.5 + 3 * rdm();
+        period /= 0.5 + 3 * rdm();
+    }
+    sin[i] = (sin_t){0, 0, 0};
+    return sin;
 }
 
 world_t setup_world(void)
@@ -37,30 +49,14 @@ double **setup_map(int width, int height)
     double **map = malloc((height + 1) * sizeof(double *));
     int y;
     int x;
-    double sin1x_off = rdm() * 100;
-    double sin2x_off = rdm() * 100;
-    double sin3x_off = rdm() * 100;
-    double sin1y_off = rdm() * 100;
-    double sin2y_off = rdm() * 100;
-    double sin3y_off = rdm() * 100;
+    sin_t *x_sin = setup_sinlist(4);
+    sin_t *y_sin = setup_sinlist(4);
     for (y = 0; y < height; y++) {
         map[y] = malloc(width * sizeof(double));
         for (x = 0; x < width; x++) {
-            map[y][x] = sin(sin1x_off + (double)x / 16) * 8 + sin(sin2x_off + \
-            (double)x / 8) * 4 + sin(sin3x_off + (double)x / 4) * 2 + \
-            sin(sin1y_off + (double)y / 16) * 8 + sin(sin2y_off + (double)y / \
-            8) * 4 + sin(sin3y_off + (double)y / 4) * 2 + \
-            rdm() - rdm();
+            map[y][x] = calc_sinlist(x_sin, y_sin, x, y);
         }
     }
     map[y] = NULL;
     return map;
-}
-
-void destroy_projmap(sfVector2i *dim, sfVector2f **projmap)
-{
-    int i;
-    for (i = 0; i < dim->y; i++)
-        free(projmap[i]);
-    free(projmap);
 }

@@ -41,6 +41,7 @@ void switch_map(winbase_t *wb)
         projmap = project_map(wb);
         draw_all(wb, projmap);
         destroy_projmap(&wb->world.dim, projmap);
+        wb->world.angle.x += 1;
     }
     for (i = 0; newmap[i] != NULL; i++)
         free(newmap[i]);

@@ -28,12 +28,25 @@ typedef struct w_colors_s {
     int max;
 } w_colors_t;
 
+typedef struct sin_s {
+    float off;
+    float peak;
+    float period;
+} sin_t;
+
+typedef struct gen_proc_s {
+    int sin_count;
+    sin_t *height;
+} gen_proc_t;
+
 typedef struct world_s {
     sfVector2i dim;
     sfVector2f pos;
     sfVector2f angle;
     float size;
     w_colors_t colors;
+    sin_t *x_sin;
+    sin_t *y_sin;
 } world_t;
 
 typedef struct winbase_s {
@@ -60,5 +73,7 @@ void destroy_projmap(sfVector2i *, sfVector2f **);
 w_colors_t setup_color(void);
 sfColor build_color(w_colors_t, double vh);
 void switch_map(winbase_t *wb);
-
+void reset_input(winbase_t *wb);
+double rdm(void);
+double calc_sinlist(sin_t *x_list, sin_t *y_list, float x, float y);
 #endif

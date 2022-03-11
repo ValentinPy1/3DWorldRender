@@ -9,7 +9,7 @@ SRCPATH	=	src/
 
 SRC	=	$(SRCPATH)main.c	\
 		$(SRCPATH)csfmlprocess.c	\
-		$(SRCPATH)setup_map.c	\
+		$(SRCPATH)setup_struct.c	\
 		$(SRCPATH)projection.c	\
 		$(SRCPATH)manage_input.c	\
 		$(SRCPATH)mouse_input.c	\

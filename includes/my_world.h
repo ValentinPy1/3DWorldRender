@@ -15,6 +15,7 @@
     #include <sys/stat.h>
     #include <fcntl.h>
     #include "my.h"
+    #include <SFML/Audio/Music.h>
 
     #define WINWIDTH 1920
     #define WINHEIGHT 1080
@@ -55,6 +56,7 @@ typedef struct winbase_s {
     sfVector2i coord;
     double **height_map;
     world_t world;
+    sfMusic *music;
 } winbase_t;
 
 sfVector2f scale_point(winbase_t *wb, sfVector2f **map, int y, int x);
@@ -76,4 +78,5 @@ void switch_map(winbase_t *wb);
 void reset_input(winbase_t *wb);
 double rdm(void);
 double calc_sinlist(sin_t *x_list, sin_t *y_list, float x, float y);
+void play_music(winbase_t *wb);
 #endif

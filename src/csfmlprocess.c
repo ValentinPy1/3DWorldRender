@@ -44,6 +44,7 @@ winbase_t *create_winbase(void)
 void destroy_winbase(winbase_t *wb)
 {
     sfRenderWindow_destroy(wb->window);
+    sfMusic_destroy(wb->music);
     free(wb);
 }
 

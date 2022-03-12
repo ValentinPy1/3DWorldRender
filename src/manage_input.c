@@ -63,10 +63,17 @@ void size_input(winbase_t *wb)
 
 void reset_input(winbase_t *wb)
 {
-    if (wb->event.key.code == (sfKeyR))
-        switch_map(wb);
-    if (wb->event.key.code == (sfKeyBackspace))
-        sfRenderWindow_close(wb->window);
+    switch (wb->event.key.code) {
+        case sfKeyR:
+            switch_map(wb);
+            break;
+        case sfKeyB:
+            switch_blank(wb);
+            break;
+        case sfKeyBackspace:
+            sfRenderWindow_close(wb->window);
+        default:
+    }
 }
 
 void kbd_input(winbase_t *wb)

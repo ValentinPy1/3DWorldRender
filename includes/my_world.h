@@ -86,4 +86,5 @@ void reset_input(winbase_t *wb);
 double rdm(void);
 double calc_sinlist(sin_t *x_list, sin_t *y_list, float x, float y);
 void play_music(winbase_t *wb);
+void switch_blank(winbase_t *wb);
 #endif

@@ -47,3 +47,37 @@ void switch_map(winbase_t *wb)
         free(newmap[i]);
     free(newmap);
 }
+
+double **setup_blankmap(int width, int height)
+{
+    double **map = malloc((height + 1) * sizeof(double *));
+    int y;
+    int x;
+    for (y = 0; y < height; y++) {
+        map[y] = malloc(width * sizeof(double));
+        for (x = 0; x < width; x++) {
+            map[y][x] = 0;
+        }
+    }
+    map[y] = NULL;
+    return map;
+}
+
+void switch_blank(winbase_t *wb)
+{
+    int i;
+    sfVector2f **projmap;
+    double **newmap = setup_blankmap(wb->world.dim.x, wb->world.dim.y);
+    w_colors_t colors = setup_color();
+    for (i = 0; i < 43; i++) {
+        update_map(wb, newmap);
+        update_colors(wb, colors);
+        projmap = project_map(wb);
+        draw_all(wb, projmap);
+        destroy_projmap(&wb->world.dim, projmap);
+        wb->world.angle.x += 1;
+    }
+    for (i = 0; newmap[i] != NULL; i++)
+        free(newmap[i]);
+    free(newmap);
+}

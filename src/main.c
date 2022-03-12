@@ -24,13 +24,21 @@ void launch(void)
 
 void print_help()
 {
-    my_putstr("help\n");
+    my_putstr("\nUSAGE:\n");
+    my_putstr("    ARROWS    : move\n");
+    my_putstr("    ZQSD      : change angle\n");
+    my_putstr("    PM        : zoom and unzoom\n");
+    my_putstr("    R         : regenerate a new map\n");
+    my_putstr("    B         : generate blank map\n");
+    my_putstr("    BACKSPACE : close window\n\n");
 }
 
 int main(int ac, char **av)
 {
-    if (ac == 2 && my_strcmp(av[1], "-h"))
-        printf("usage\n");
-    launch();
+    if (ac >= 2 && my_strcmp(av[1], "-h")) {
+        print_help();
+    } else {
+        launch();
+    }
     return 0;
 }

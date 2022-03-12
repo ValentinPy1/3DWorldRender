@@ -23,6 +23,13 @@
     #define WINBPP 32
     #define PI 3.14159265359
 
+typedef struct button_s {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfVector2f pos;
+    sfVector2f size;
+} button_t;
+
 typedef struct w_colors_s {
     sfColor high;
     sfColor low;

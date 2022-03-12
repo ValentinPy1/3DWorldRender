@@ -65,6 +65,8 @@ void reset_input(winbase_t *wb)
 {
     if (wb->event.key.code == (sfKeyR))
         switch_map(wb);
+    if (wb->event.key.code == (sfKeyBackspace))
+        sfRenderWindow_close(wb->window);
 }
 
 void kbd_input(winbase_t *wb)

@@ -11,7 +11,7 @@ sfRenderWindow *create_window(void)
 {
     sfVideoMode mode = {WINWIDTH, WINHEIGHT, WINBPP};
     const char *title = "my_world";
-    return sfRenderWindow_create(mode, title, sfClose | sfResize, NULL);
+    return sfRenderWindow_create(mode, title, sfClose | sfResize | sfFullscreen, NULL);
 }
 
 void handle_event(winbase_t *wb)
@@ -43,7 +43,11 @@ winbase_t *create_winbase(void)
 
 void destroy_winbase(winbase_t *wb)
 {
+    int i;
     sfRenderWindow_destroy(wb->window);
+    for (i = 0; wb->height_map[i] != NULL; i++)
+        free(wb->height_map[i]);
+    free(wb->height_map);
     sfMusic_destroy(wb->music);
     free(wb);
 }

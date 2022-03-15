@@ -11,7 +11,8 @@ sfRenderWindow *create_window(void)
 {
     sfVideoMode mode = {WINWIDTH, WINHEIGHT, WINBPP};
     const char *title = "my_world";
-    return sfRenderWindow_create(mode, title, sfClose | sfResize | sfFullscreen, NULL);
+    return sfRenderWindow_create(mode, title,\
+    sfClose | sfResize | sfFullscreen, NULL);
 }
 
 void handle_event(winbase_t *wb)
@@ -38,6 +39,7 @@ winbase_t *create_winbase(void)
     wb->world = setup_world();
     wb->height_map = setup_map(wb->world.dim.x, wb->world.dim.y);
     sfRenderWindow_setFramerateLimit(wb->window, WINFPS);
+    wb->menu.draw = false;
     return wb;
 }
 

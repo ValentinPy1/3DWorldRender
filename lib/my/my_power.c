@@ -7,7 +7,9 @@
 
 int my_power(int nb, int p)
 {
-    if (p == 0) return (1);
-    if (p < 0) return (0);
+    if (p == 0)
+        return (1);
+    if (p < 0)
+        return (0);
     return (nb * my_power(nb, p - 1));
 }

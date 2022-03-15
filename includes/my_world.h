@@ -16,7 +16,6 @@
     #include <fcntl.h>
     #include "my.h"
     #include <SFML/Audio/Music.h>
-
     #define WINWIDTH 1920
     #define WINHEIGHT 1080
     #define WINFPS 60
@@ -29,6 +28,16 @@ typedef struct button_s {
     sfVector2f pos;
     sfVector2f size;
 } button_t;
+
+typedef struct slider_s {
+    sfSprite *bar_spr;
+    sfSprite *ball_spr;
+    sfTexture *bar_text;
+    sfTexture *ball_text;
+    sfVector2f pos;
+    sfVector2f size;
+    float value;
+} slider_t;
 
 typedef struct w_colors_s {
     sfColor high;
@@ -57,6 +66,11 @@ typedef struct world_s {
     sin_t *y_sin;
 } world_t;
 
+typedef struct menu_s {
+    bool draw;
+    button_t button;
+} menu_t;
+
 typedef struct winbase_s {
     sfRenderWindow *window;
     sfEvent event;
@@ -64,6 +78,7 @@ typedef struct winbase_s {
     double **height_map;
     world_t world;
     sfMusic *music;
+    menu_t menu;
 } winbase_t;
 
 sfVector2f scale_point(winbase_t *wb, sfVector2f **map, int y, int x);

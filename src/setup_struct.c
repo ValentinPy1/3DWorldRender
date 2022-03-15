@@ -44,6 +44,11 @@ world_t setup_world(void)
     return world;
 }
 
+button_t setup_button(sfVector2f pos, sfVector2f size, sfTexture *text)
+{
+    
+}
+
 double **setup_map(int width, int height)
 {
     double **map = malloc((height + 1) * sizeof(double *));

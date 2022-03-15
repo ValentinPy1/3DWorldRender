@@ -13,19 +13,26 @@ void update_map(winbase_t *wb, double **height_map)
     int x;
     for (y = 0; y < wb->world.dim.y; y++) {
         for (x = 0; x < wb->world.dim.x; x++) {
-            wb->height_map[y][x] = wb->height_map[y][x] * 0.95 + height_map[y][x] * 0.05;
+            wb->height_map[y][x] = wb->height_map[y][x] *\
+            0.95 + height_map[y][x] * 0.05;
         }
     }
 }
 
 void update_colors(winbase_t *wb, w_colors_t colors)
 {
-    wb->world.colors.high.r = wb->world.colors.high.r * 0.95 + colors.high.r * 0.05;
-    wb->world.colors.high.g = wb->world.colors.high.g * 0.95 + colors.high.g * 0.05;
-    wb->world.colors.high.b = wb->world.colors.high.b * 0.95 + colors.high.b * 0.05;
-    wb->world.colors.low.r = wb->world.colors.low.r * 0.95 + colors.low.r * 0.05;
-    wb->world.colors.low.g = wb->world.colors.low.g * 0.95 + colors.low.g * 0.05;
-    wb->world.colors.low.b = wb->world.colors.low.b * 0.95 + colors.low.b * 0.05;
+    wb->world.colors.high.r = wb->world.colors.high.r *\
+    0.95 + colors.high.r * 0.05;
+    wb->world.colors.high.g = wb->world.colors.high.g *\
+    0.95 + colors.high.g * 0.05;
+    wb->world.colors.high.b = wb->world.colors.high.b *\
+    0.95 + colors.high.b * 0.05;
+    wb->world.colors.low.r = wb->world.colors.low.r *\
+    0.95 + colors.low.r * 0.05;
+    wb->world.colors.low.g = wb->world.colors.low.g *\
+    0.95 + colors.low.g * 0.05;
+    wb->world.colors.low.b = wb->world.colors.low.b *\
+    0.95 + colors.low.b * 0.05;
 
 }
 

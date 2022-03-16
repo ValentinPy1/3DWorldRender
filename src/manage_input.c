@@ -72,6 +72,10 @@ void reset_input(winbase_t *wb)
             break;
         case sfKeyBackspace:
             sfRenderWindow_close(wb->window);
+            break;
+        case sfKeyH:
+            wb->menu.draw *= -1;
+            break;
         default:
     }
 }

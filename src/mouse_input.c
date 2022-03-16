@@ -44,6 +44,11 @@ int button)
     }
 }
 
+void wheelinput(winbase_t *wb)
+{
+    wb->world.size += wb->event.mouseWheel.delta;
+}
+
 void handle_mouse(winbase_t *wb, sfVector2f **projmap)
 {
     sfVector2i mouse_pos;

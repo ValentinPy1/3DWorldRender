@@ -67,7 +67,7 @@ typedef struct world_s {
 } world_t;
 
 typedef struct menu_s {
-    bool draw;
+    int draw;
     button_t button;
 } menu_t;
 

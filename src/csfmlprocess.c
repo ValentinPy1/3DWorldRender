@@ -26,8 +26,7 @@ void handle_event(winbase_t *wb)
                 kbd_input(wb);
                 break;
             case (sfEvtMouseButtonPressed):
-                if (is_clicked(wb, &wb->menu.button))
-                    switch_blank(wb);
+                test_buttons(wb);
                 break;
             case (sfEvtMouseWheelMoved):
                 wb->world.size *= pow(1.15, (float)wb->event.mouseWheel.delta);
@@ -47,8 +46,9 @@ winbase_t *create_winbase(void)
     wb->height_map = setup_map(wb->world.dim.x, wb->world.dim.y);
     sfRenderWindow_setFramerateLimit(wb->window, WINFPS);
     wb->menu.draw = 1;
-    wb->menu.button = setup_button((sfVector2f){200, 200},\
-    (sfVector2f){1, 1}, "assets/blankmapbutton.png");
+    wb->menu.button = setup_button((sfVector2f){1700, 50},\
+    (sfVector2f){0.5, 0.5}, "assets/flattenmap.png");
+    wb->font = sfFont_createFromFile("assets/font.otf");
     return wb;
 }
 
@@ -60,6 +60,7 @@ void destroy_winbase(winbase_t *wb)
         free(wb->height_map[i]);
     free(wb->height_map);
     sfMusic_destroy(wb->music);
+    sfFont_destroy(wb->font);
     free(wb);
 }
 
@@ -71,5 +72,6 @@ void draw_all(winbase_t *wb, sfVector2f **map)
     if (wb->menu.draw == 1) {
         sfRenderWindow_drawSprite(wb->window, wb->menu.button.sprite, NULL);
     }
+    display_str(wb, "huhuhuhu");
     sfRenderWindow_display(wb->window);
 }

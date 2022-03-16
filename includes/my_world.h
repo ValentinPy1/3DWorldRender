@@ -79,6 +79,7 @@ typedef struct winbase_s {
     world_t world;
     sfMusic *music;
     menu_t menu;
+    sfFont *font;
 } winbase_t;
 
 sfVector2f scale_point(winbase_t *wb, sfVector2f **map, int y, int x);
@@ -104,5 +105,7 @@ void play_music(winbase_t *wb);
 void switch_blank(winbase_t *wb);
 button_t setup_button(sfVector2f pos, sfVector2f size, char *file);
 bool is_clicked(winbase_t *wb, button_t *button);
+void test_buttons(winbase_t *wb);
+void display_str(winbase_t *wb, char *str);
 
 #endif

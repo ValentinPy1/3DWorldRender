@@ -7,6 +7,26 @@
 
 #include "my_world.h"
 
+void test_buttons(winbase_t *wb)
+{
+    if (is_clicked(wb, &wb->menu.button))
+        switch_blank(wb);
+}
+
+void display_str(winbase_t *wb, char *str)
+{
+    sfVector2f position = {1500, 90};
+    sfVector2f scale = {1.5, 1.5};
+    sfText *text = sfText_create();
+    sfText_setPosition(text, position);
+    sfText_setString(text, str);
+    sfText_setColor(text, sfWhite);
+    sfText_setFont(text, wb->font);
+    sfText_setScale(text, scale);
+    sfRenderWindow_drawText(wb->window, text, NULL);
+    sfText_destroy(text);
+}
+
 bool is_clicked(winbase_t *wb, button_t *button)
 {
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(wb->window);

@@ -42,7 +42,6 @@ void switch_map(winbase_t *wb)
     double **newmap = setup_map(wb->world.dim.x, wb->world.dim.y);;
     w_colors_t colors = setup_color();
     float prop = pow(0.95, (60.0 / (float)WINFPS));
-    printf("prop: %f\n", prop);
     for (i = 0; i < 43 * WINFPS / 60.0; i++) {
         update_map(wb, newmap, prop);
         update_colors(wb, colors, prop);

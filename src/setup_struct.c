@@ -44,9 +44,19 @@ world_t setup_world(void)
     return world;
 }
 
-button_t setup_button(sfVector2f pos, sfVector2f size, sfTexture *text)
+button_t setup_button(sfVector2f pos, sfVector2f size, char *file)
 {
-    
+    button_t button;
+    sfVector2u textsize;
+    button.texture = sfTexture_createFromFile(file, NULL);
+    button.sprite = sfSprite_create();
+    sfSprite_setTexture(button.sprite, button.texture, sfFalse);
+    button.pos = pos;
+    textsize = sfTexture_getSize(button.texture);
+    button.size = (sfVector2f){size.x * textsize.x, size.y * textsize.y};
+    sfSprite_setScale(button.sprite, size);
+    sfSprite_setPosition(button.sprite, pos);
+    return button;
 }
 
 double **setup_map(int width, int height)

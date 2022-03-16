@@ -15,6 +15,7 @@ SRC	=	$(SRCPATH)main.c	\
 		$(SRCPATH)mouse_input.c	\
 		$(SRCPATH)colors.c	\
 		$(SRCPATH)switch_map.c	\
+		$(SRCPATH)handlebutton.c	\
 
 NAME	=	my_world
 

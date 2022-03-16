@@ -7,19 +7,19 @@
 
 #include "my_world.h"
 
-void update_map(winbase_t *wb, double **height_map)
+void update_map(winbase_t *wb, double **height_map, float prop)
 {
     int y;
     int x;
     for (y = 0; y < wb->world.dim.y; y++) {
         for (x = 0; x < wb->world.dim.x; x++) {
             wb->height_map[y][x] = wb->height_map[y][x] *\
-            0.95 + height_map[y][x] * 0.05;
+            prop + height_map[y][x] * (1 - prop);
         }
     }
 }
 
-void update_colors(winbase_t *wb, w_colors_t colors)
+void update_colors(winbase_t *wb, w_colors_t colors, float prop)
 {
     wb->world.colors.high.r = wb->world.colors.high.r *\
     0.95 + colors.high.r * 0.05;
@@ -42,13 +42,14 @@ void switch_map(winbase_t *wb)
     sfVector2f **projmap;
     double **newmap = setup_map(wb->world.dim.x, wb->world.dim.y);;
     w_colors_t colors = setup_color();
-    for (i = 0; i < 43; i++) {
-        update_map(wb, newmap);
-        update_colors(wb, colors);
+    float prop = pow(0.95, (60.0 / (float)WINFPS));
+    printf("prop: %f\n", prop);
+    for (i = 0; i < 43 * WINFPS / 60.0; i++) {
+        update_map(wb, newmap, prop);
+        update_colors(wb, colors, prop);
         projmap = project_map(wb);
         draw_all(wb, projmap);
         destroy_projmap(&wb->world.dim, projmap);
-        wb->world.angle.x += 1;
     }
     for (i = 0; newmap[i] != NULL; i++)
         free(newmap[i]);
@@ -75,14 +76,12 @@ void switch_blank(winbase_t *wb)
     int i;
     sfVector2f **projmap;
     double **newmap = setup_blankmap(wb->world.dim.x, wb->world.dim.y);
-    w_colors_t colors = setup_color();
-    for (i = 0; i < 43; i++) {
-        update_map(wb, newmap);
-        update_colors(wb, colors);
+    float prop = pow(0.95, 60.0 / WINFPS);
+    for (i = 0; i < 3 * WINFPS / 60; i++) {
+        update_map(wb, newmap, prop);
         projmap = project_map(wb);
         draw_all(wb, projmap);
         destroy_projmap(&wb->world.dim, projmap);
-        wb->world.angle.x += 1;
     }
     for (i = 0; newmap[i] != NULL; i++)
         free(newmap[i]);

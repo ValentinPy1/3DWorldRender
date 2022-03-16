@@ -18,7 +18,7 @@
     #include <SFML/Audio/Music.h>
     #define WINWIDTH 1920
     #define WINHEIGHT 1080
-    #define WINFPS 60
+    #define WINFPS 80
     #define WINBPP 32
     #define PI 3.14159265359
 
@@ -102,4 +102,7 @@ double rdm(void);
 double calc_sinlist(sin_t *x_list, sin_t *y_list, float x, float y);
 void play_music(winbase_t *wb);
 void switch_blank(winbase_t *wb);
+button_t setup_button(sfVector2f pos, sfVector2f size, char *file);
+bool is_clicked(winbase_t *wb, button_t *button);
+
 #endif

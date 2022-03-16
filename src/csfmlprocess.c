@@ -25,6 +25,9 @@ void handle_event(winbase_t *wb)
             case (sfEvtKeyPressed):
                 kbd_input(wb);
                 break;
+            case (sfEvtMouseButtonPressed):
+                if (is_clicked(wb, &wb->menu.button))
+                    switch_blank(wb);
             default:
                 break;
         }
@@ -40,6 +43,8 @@ winbase_t *create_winbase(void)
     wb->height_map = setup_map(wb->world.dim.x, wb->world.dim.y);
     sfRenderWindow_setFramerateLimit(wb->window, WINFPS);
     wb->menu.draw = false;
+    wb->menu.button = setup_button((sfVector2f){200, 200},\
+    (sfVector2f){1, 1}, "assets/blankmapbutton.png");
     return wb;
 }
 
@@ -56,8 +61,9 @@ void destroy_winbase(winbase_t *wb)
 
 void draw_all(winbase_t *wb, sfVector2f **map)
 {
+    sfRenderWindow_clear(wb->window, sfBlack);
     draw_x_lines(wb, map);
     draw_y_lines(wb, map);
+    sfRenderWindow_drawSprite(wb->window, wb->menu.button.sprite, NULL);
     sfRenderWindow_display(wb->window);
-    sfRenderWindow_clear(wb->window, sfBlack);
 }

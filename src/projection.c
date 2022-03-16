@@ -62,9 +62,9 @@ void draw_x_lines(winbase_t *wb, sfVector2f **map)
     int y;
     sfColor color;
     double vh;
-    for (y = 0; y < wb->world.dim.x; y++) {
+    for (y = 0; y < wb->world.dim.y; y++) {
         vertex_array = sfVertexArray_create();
-        for (x = 0; x < wb->world.dim.y; x++) {
+        for (x = 0; x < wb->world.dim.x; x++) {
             scaledpoint = scale_point(wb, map, y, x);
             vh = wb->height_map[y][x] * 10;
             color = build_color(wb->world.colors, vh);

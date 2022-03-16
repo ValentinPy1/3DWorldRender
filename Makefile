@@ -34,12 +34,6 @@ all:	$(NAME)
 $(NAME):	$(LIBNAME)
 	gcc $(SRC) -o $(NAME) $(CPPFLAGS) $(LDFLAGS) $(CFLAGS)
 
-tests_run:	$(LIBNAME)
-	make -C tests/
-
-cov:
-	make -C tests/ cov
-
 $(LIBNAME):
 	make -C $(LIBPATH)
 
@@ -51,7 +45,5 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -f ./lib/$(LIBNAME)
-	rm -f $(TEST_NAME)
-	make -C tests/ fclean
 
 re:	fclean	all

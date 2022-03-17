@@ -9,13 +9,24 @@
 
 void test_buttons(winbase_t *wb)
 {
-    if (is_clicked(wb, &wb->menu.button))
+    if (is_clicked(wb, &wb->menu.flatten)) {
         switch_blank(wb);
+    } else if (is_clicked(wb, &wb->menu.redim)) {
+        redim_trigger(wb);
+    }
+}
+
+void setup_buttons(winbase_t *wb)
+{
+    wb->menu.flatten = setup_button((sfVector2f){1700, 50},\
+    (sfVector2f){0.5, 0.5}, "assets/flattenmap.png");
+    wb->menu.redim = setup_button((sfVector2f){1700, 100},\
+    (sfVector2f){0.5, 0.5}, "assets/redimension.png");
 }
 
 void display_str(winbase_t *wb, char *str)
 {
-    sfVector2f position = {1500, 90};
+    sfVector2f position = {100, 90};
     sfVector2f scale = {1.5, 1.5};
     sfText *text = sfText_create();
     sfText_setPosition(text, position);

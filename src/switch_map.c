@@ -46,7 +46,7 @@ void switch_map(winbase_t *wb)
         update_map(wb, newmap, prop);
         update_colors(wb, colors, prop);
         projmap = project_map(wb);
-        draw_all(wb, projmap);
+        draw_all(wb, projmap, "");
         destroy_projmap(&wb->world.dim, projmap);
     }
     for (i = 0; newmap[i] != NULL; i++)
@@ -78,7 +78,7 @@ void switch_blank(winbase_t *wb)
     for (i = 0; i < 3 * WINFPS / 60; i++) {
         update_map(wb, newmap, prop);
         projmap = project_map(wb);
-        draw_all(wb, projmap);
+        draw_all(wb, projmap, "");
         destroy_projmap(&wb->world.dim, projmap);
     }
     for (i = 0; newmap[i] != NULL; i++)

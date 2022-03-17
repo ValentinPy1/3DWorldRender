@@ -46,8 +46,7 @@ winbase_t *create_winbase(void)
     wb->height_map = setup_map(wb->world.dim.x, wb->world.dim.y);
     sfRenderWindow_setFramerateLimit(wb->window, WINFPS);
     wb->menu.draw = 1;
-    wb->menu.button = setup_button((sfVector2f){1700, 50},\
-    (sfVector2f){0.5, 0.5}, "assets/flattenmap.png");
+    setup_buttons(wb);
     wb->font = sfFont_createFromFile("assets/font.otf");
     return wb;
 }
@@ -64,14 +63,15 @@ void destroy_winbase(winbase_t *wb)
     free(wb);
 }
 
-void draw_all(winbase_t *wb, sfVector2f **map)
+void draw_all(winbase_t *wb, sfVector2f **map, char *str)
 {
-    sfRenderWindow_clear(wb->window, sfBlack);
     draw_x_lines(wb, map);
     draw_y_lines(wb, map);
     if (wb->menu.draw == 1) {
-        sfRenderWindow_drawSprite(wb->window, wb->menu.button.sprite, NULL);
+        sfRenderWindow_drawSprite(wb->window, wb->menu.flatten.sprite, NULL);
+        sfRenderWindow_drawSprite(wb->window, wb->menu.redim.sprite, NULL);
     }
-    display_str(wb, "huhuhuhu");
+    display_str(wb, str);
     sfRenderWindow_display(wb->window);
+    sfRenderWindow_clear(wb->window, sfBlack);
 }

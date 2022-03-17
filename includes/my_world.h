@@ -68,7 +68,8 @@ typedef struct world_s {
 
 typedef struct menu_s {
     int draw;
-    button_t button;
+    button_t flatten;
+    button_t redim;
 } menu_t;
 
 typedef struct winbase_s {
@@ -87,7 +88,7 @@ winbase_t *create_winbase(void);
 void handle_event(winbase_t *);
 sfRenderWindow *create_window(void);
 void destroy_winbase(winbase_t *);
-void draw_all(winbase_t *, sfVector2f **);
+void draw_all(winbase_t *, sfVector2f **, char *);
 double **setup_map(int, int);
 void draw_x_lines(winbase_t *, sfVector2f **);
 void draw_y_lines(winbase_t *, sfVector2f **);
@@ -107,5 +108,7 @@ button_t setup_button(sfVector2f pos, sfVector2f size, char *file);
 bool is_clicked(winbase_t *wb, button_t *button);
 void test_buttons(winbase_t *wb);
 void display_str(winbase_t *wb, char *str);
+void redim_trigger(winbase_t *wb);
+void setup_buttons(winbase_t *wb);
 
 #endif

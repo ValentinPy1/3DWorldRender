@@ -14,42 +14,46 @@ int close_d(int num1, float num2, int distance)
     return 0;
 }
 
-void adjust_points(winbase_t *wb, sfVector2f scaledpoint, sfVector2i mouse_pos,
-int button)
+void adjust_points(winbase_t *wb, sfVector2i mouse_pos)
 {
     int dist = 10;
     int y = wb->coord.y;
     int x = wb->coord.x;
+    sfVector2f scaledpoint;
 
-    if (close_d(mouse_pos.y, scaledpoint.y, dist) == 1 && close_d(mouse_pos.x,
-    scaledpoint.x, dist) == 1) {
-        wb->height_map[y][x] += button;
+    if (close_d(mouse_pos.y, y, dist) == 1 && close_d(mouse_pos.x,
+x, dist) == 1) {
+        wb->height_map[y][x] += 1;
     }
 }
 
+sfVector2i scale_mouse(winbase_t *wb, sfVector2i mouse_pos, int factor)
+{
+    sfVector2i scaledpoint;
+
+    scaledpoint.x = mouse_pos.x / factor;
+    scaledpoint.y = mouse_pos.y / factor;
+
+    return scaledpoint;
+}
+
 void check_points(winbase_t *wb, sfVector2i mouse_pos, sfVector2f **projmap,
-int button)
+int factor)
 {
     int height = wb->world.dim.y;
     int width = wb->world.dim.x;
-    sfVector2f scaledpoint;
 
+    mouse_pos = scale_mouse(wb, mouse_pos, factor);
     for (int y = 1; y < height - 1; y++) {
         for (int x = 1; x < width - 1; x++) {
-            scaledpoint = scale_point(wb, projmap, y, x);
             wb->coord.y = y;
             wb->coord.x = x;
-            adjust_points(wb, scaledpoint, mouse_pos, button);
+            adjust_points(wb, mouse_pos);
         }
     }
 }
 
-void wheelinput(winbase_t *wb)
-{
-    wb->world.size += wb->event.mouseWheel.delta;
-}
-
-void handle_mouse(winbase_t *wb, sfVector2f **projmap)
+void handle_mouse(winbase_t *wb, sfVector2f **projmap, int factor)
 {
     sfVector2i mouse_pos;
     sfBool right_button;
@@ -57,9 +61,6 @@ void handle_mouse(winbase_t *wb, sfVector2f **projmap)
 
     mouse_pos = sfMouse_getPositionRenderWindow(wb->window);
     left_button = sfMouse_isButtonPressed(sfMouseLeft);
-    right_button = sfMouse_isButtonPressed(sfMouseRight);
     if (left_button == sfTrue)
-        check_points(wb, mouse_pos, projmap, 1);
-    if (right_button == sfTrue)
-        check_points(wb, mouse_pos, projmap, -1);
+        check_points(wb, mouse_pos, projmap, factor);
 }

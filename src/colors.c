@@ -42,7 +42,7 @@ void destroy_projmap(sfVector2i *dim, sfVector2f **projmap)
 
 void play_music(winbase_t *wb)
 {
-    wb->music = sfMusic_createFromFile("assets/my_music.wav");
+    wb->music = sfMusic_createFromFile("assets/my_music.ogg");
     sfMusic_setLoop(wb->music, true);
     sfMusic_play(wb->music);
 }

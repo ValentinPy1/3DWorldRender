@@ -13,6 +13,11 @@ void test_buttons(winbase_t *wb)
         switch_blank(wb);
     } else if (is_clicked(wb, &wb->menu.redim)) {
         redim_trigger(wb);
+    } else if (is_clicked(wb, &wb->menu.auto_rota)) {
+        if (wb->event.mouseButton.button == sfMouseLeft)
+            wb->world.rota += 0.2;
+        if (wb->event.mouseButton.button == sfMouseRight)
+            wb->world.rota -= 0.2;
     }
 }
 
@@ -22,6 +27,8 @@ void setup_buttons(winbase_t *wb)
     (sfVector2f){0.5, 0.5}, "assets/flattenmap.png");
     wb->menu.redim = setup_button((sfVector2f){1700, 100},\
     (sfVector2f){0.5, 0.5}, "assets/redimension.png");
+    wb->menu.auto_rota = setup_button((sfVector2f){1700, 150},\
+    (sfVector2f){0.5, 0.5}, "assets/autorota.png");
 }
 
 void display_str(winbase_t *wb, char *str)

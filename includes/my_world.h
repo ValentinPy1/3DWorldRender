@@ -64,12 +64,14 @@ typedef struct world_s {
     w_colors_t colors;
     sin_t *x_sin;
     sin_t *y_sin;
+    float rota;
 } world_t;
 
 typedef struct menu_s {
     int draw;
     button_t flatten;
     button_t redim;
+    button_t auto_rota;
 } menu_t;
 
 typedef struct winbase_s {

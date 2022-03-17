@@ -70,6 +70,7 @@ void draw_all(winbase_t *wb, sfVector2f **map, char *str)
     if (wb->menu.draw == 1) {
         sfRenderWindow_drawSprite(wb->window, wb->menu.flatten.sprite, NULL);
         sfRenderWindow_drawSprite(wb->window, wb->menu.redim.sprite, NULL);
+        sfRenderWindow_drawSprite(wb->window, wb->menu.auto_rota.sprite, NULL);
     }
     display_str(wb, str);
     sfRenderWindow_display(wb->window);

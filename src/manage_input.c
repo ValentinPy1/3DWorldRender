@@ -11,16 +11,16 @@ void angle_input(winbase_t *wb)
 {
     switch (wb->event.key.code) {
         case (sfKeyD):
-            wb->world.angle.x += 2;
-            break;
-        case (sfKeyQ):
             wb->world.angle.x -= 2;
             break;
+        case (sfKeyQ):
+            wb->world.angle.x += 2;
+            break;
         case (sfKeyZ):
-            wb->world.angle.y += 2;
+            wb->world.angle.y -= 2;
             break;
         case (sfKeyS):
-            wb->world.angle.y -= 2;
+            wb->world.angle.y += 2;
             break;
         default:
             break;

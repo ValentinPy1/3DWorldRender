@@ -17,6 +17,7 @@ void launch(void)
         draw_all(wb, projmap, "");
         destroy_projmap(&wb->world.dim, projmap);
         handle_event(wb);
+        wb->world.angle.x += wb->world.rota;
         //handle_mouse(wb, projmap);
     }
     destroy_winbase(wb);

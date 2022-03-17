@@ -41,6 +41,7 @@ world_t setup_world(void)
     world.size = 1000;
     world.dim = (sfVector2i){200, 200};
     world.colors = setup_color();
+    world.rota = 0;
     return world;
 }
 

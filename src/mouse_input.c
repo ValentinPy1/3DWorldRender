@@ -7,49 +7,47 @@
 
 #include "my_world.h"
 
-int close_d(int num1, float num2, int distance)
+float gauss(float xdist, float ydist)
 {
-    if (num1 + distance >= num2 && num1 - distance <= num2)
-        return 1;
-    return 0;
+    float std_dev = 5;
+    float dist = sqrt(pow(xdist, 2) + pow(ydist, 2));
+    float a = 1 / (std_dev * 2.5);
+    float b = pow(2.7, -(pow(dist, 2) / (2 * pow(std_dev, 2))));
+    return 10 * a * b;
 }
 
-void adjust_points(winbase_t *wb, sfVector2f scaledpoint, sfVector2i mouse_pos,
-int button)
+void adjust_points(winbase_t *wb, sfVector2i mouse_pos, float coef)
 {
-    int dist = 10;
     int y = wb->coord.y;
     int x = wb->coord.x;
-
-    if (close_d(mouse_pos.y, scaledpoint.y, dist) == 1 && close_d(mouse_pos.x,
-    scaledpoint.x, dist) == 1) {
-        wb->height_map[y][x] += button;
-    }
+    wb->height_map[y][x] += coef * gauss(mouse_pos.x - x, mouse_pos.y - y);
 }
 
-void check_points(winbase_t *wb, sfVector2i mouse_pos, sfVector2f **projmap,
-int button)
+sfVector2i scale_mouse(sfVector2i mouse_pos, int factor)
+{
+    sfVector2i scaledpoint;
+    scaledpoint.x = mouse_pos.x / factor;
+    scaledpoint.y = mouse_pos.y / factor;
+    return scaledpoint;
+}
+
+void check_points(winbase_t *wb, sfVector2i mouse_pos, int factor)
 {
     int height = wb->world.dim.y;
     int width = wb->world.dim.x;
-    sfVector2f scaledpoint;
-
+    int left_button = sfMouse_isButtonPressed(sfMouseLeft);
+    int right_button = sfMouse_isButtonPressed(sfMouseRight);
+    mouse_pos = scale_mouse(mouse_pos, factor);
     for (int y = 1; y < height - 1; y++) {
         for (int x = 1; x < width - 1; x++) {
-            scaledpoint = scale_point(wb, projmap, y, x);
             wb->coord.y = y;
             wb->coord.x = x;
-            adjust_points(wb, scaledpoint, mouse_pos, button);
+            adjust_points(wb, mouse_pos, left_button - right_button);
         }
     }
 }
 
-void wheelinput(winbase_t *wb)
-{
-    wb->world.size += wb->event.mouseWheel.delta;
-}
-
-void handle_mouse(winbase_t *wb, sfVector2f **projmap)
+void handle_mouse(winbase_t *wb, int factor)
 {
     sfVector2i mouse_pos;
     sfBool right_button;
@@ -58,8 +56,6 @@ void handle_mouse(winbase_t *wb, sfVector2f **projmap)
     mouse_pos = sfMouse_getPositionRenderWindow(wb->window);
     left_button = sfMouse_isButtonPressed(sfMouseLeft);
     right_button = sfMouse_isButtonPressed(sfMouseRight);
-    if (left_button == sfTrue)
-        check_points(wb, mouse_pos, projmap, 1);
-    if (right_button == sfTrue)
-        check_points(wb, mouse_pos, projmap, -1);
+    if (left_button || right_button)
+        check_points(wb, mouse_pos, factor);
 }

@@ -112,5 +112,7 @@ void test_buttons(winbase_t *wb);
 void display_str(winbase_t *wb, char *str);
 void redim_trigger(winbase_t *wb);
 void setup_buttons(winbase_t *wb);
+void editor(winbase_t *wb);
+void handle_mouse(winbase_t *wb, int factor);
 
 #endif

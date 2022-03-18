@@ -18,7 +18,7 @@ void launch(void)
         destroy_projmap(&wb->world.dim, projmap);
         handle_event(wb);
         wb->world.angle.x += wb->world.rota;
-        //handle_mouse(wb, projmap);
+        editor(wb);
     }
     destroy_winbase(wb);
 }

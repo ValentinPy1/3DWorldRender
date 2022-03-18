@@ -63,10 +63,24 @@ void editor_y_lines(winbase_t *wb, int factor)
     }
 }
 
+sfCircleShape *create_circle(void)
+{
+    sfCircleShape *circle = sfCircleShape_create();
+    sfCircleShape_setFillColor(circle, sfTransparent);
+    sfCircleShape_setOutlineThickness(circle, 1);
+    sfCircleShape_setOutlineColor(circle, sfWhite);
+    return circle;
+}
+
 void editor(winbase_t *wb)
 {
     int factor = 4;
+    float rad = wb->pen_size * 5;
+    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(wb->window);
     editor_x_lines(wb, factor);
     editor_y_lines(wb, factor);
     handle_mouse(wb, factor);
+    sfCircleShape_setRadius(wb->circle, rad);
+    sfCircleShape_setPosition(wb->circle, (sfVector2f){mouse_pos.x - rad, mouse_pos.y - rad});
+    sfRenderWindow_drawCircleShape(wb->window, wb->circle, NULL);
 }

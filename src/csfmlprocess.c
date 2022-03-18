@@ -50,6 +50,8 @@ winbase_t *create_winbase(void)
     wb->font = sfFont_createFromFile("assets/font.otf");
     wb->pen_size = 10;
     wb->pen_strenght = 10;
+    wb->editor = false;
+    wb->circle = create_circle();
     return wb;
 }
 

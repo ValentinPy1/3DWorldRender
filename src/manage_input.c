@@ -88,6 +88,8 @@ void reset_input(winbase_t *wb)
         case sfKeyH:
             wb->menu.draw *= -1;
             break;
+        case sfKeyE:
+            wb->editor = 1 - wb->editor;
         default:
     }
 }

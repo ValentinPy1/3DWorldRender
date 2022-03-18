@@ -18,7 +18,7 @@
     #include <SFML/Audio/Music.h>
     #define WINWIDTH 1920
     #define WINHEIGHT 1080
-    #define WINFPS 80
+    #define WINFPS 60
     #define WINBPP 32
     #define PI 3.14159265359
 
@@ -85,6 +85,8 @@ typedef struct winbase_s {
     sfFont *font;
     float pen_size;
     float pen_strenght;
+    bool editor;
+    sfCircleShape *circle;
 } winbase_t;
 
 sfVector2f scale_point(winbase_t *wb, sfVector2f **map, int y, int x);
@@ -116,5 +118,6 @@ void redim_trigger(winbase_t *wb);
 void setup_buttons(winbase_t *wb);
 void editor(winbase_t *wb);
 void handle_mouse(winbase_t *wb, int factor);
+sfCircleShape *create_circle(void);
 
 #endif

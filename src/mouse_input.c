@@ -13,7 +13,7 @@ float gauss(winbase_t *wb, float xdist, float ydist)
     float dist = sqrt(pow(xdist, 2) + pow(ydist, 2));
     float a = 1 / (std_dev * 2.5);
     float b = pow(2.7, -(pow(dist, 2) / (2 * pow(std_dev, 2))));
-    return wb->pen_strenght * a * b;
+    return wb->pen_strenght * a * b * 60 / WINFPS;
 }
 
 void adjust_points(winbase_t *wb, sfVector2i mouse_pos, float coef)

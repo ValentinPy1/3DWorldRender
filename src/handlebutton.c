@@ -15,9 +15,9 @@ void test_buttons(winbase_t *wb)
         redim_trigger(wb);
     } else if (is_clicked(wb, &wb->menu.auto_rota)) {
         if (wb->event.mouseButton.button == sfMouseLeft)
-            wb->world.rota += 0.2;
+            wb->world.rota += 0.2 * 60 / WINFPS;
         if (wb->event.mouseButton.button == sfMouseRight)
-            wb->world.rota -= 0.2;
+            wb->world.rota -= 0.2 * 60 / WINFPS;
     }
 }
 

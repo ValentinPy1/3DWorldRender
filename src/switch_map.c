@@ -46,6 +46,8 @@ void switch_map(winbase_t *wb)
         update_map(wb, newmap, prop);
         update_colors(wb, colors, prop);
         projmap = project_map(wb);
+        if (wb->editor)
+            editor(wb);
         draw_all(wb, projmap, "");
         destroy_projmap(&wb->world.dim, projmap);
         wb->world.angle.x += wb->world.rota;
@@ -80,10 +82,13 @@ void switch_blank(winbase_t *wb)
     for (i = 0; i < 3 * WINFPS / 60; i++) {
         update_map(wb, newmap, prop);
         projmap = project_map(wb);
+        if (wb->editor)
+            editor(wb);
         draw_all(wb, projmap, "");
         destroy_projmap(&wb->world.dim, projmap);
         wb->world.angle.x += wb->world.rota;
         handle_event(wb);
+
     }
     for (i = 0; newmap[i] != NULL; i++)
         free(newmap[i]);

@@ -7,20 +7,20 @@
 
 #include "my_world.h"
 
-float gauss(float xdist, float ydist)
+float gauss(winbase_t *wb, float xdist, float ydist)
 {
-    float std_dev = 5;
+    float std_dev = wb->pen_size;
     float dist = sqrt(pow(xdist, 2) + pow(ydist, 2));
     float a = 1 / (std_dev * 2.5);
     float b = pow(2.7, -(pow(dist, 2) / (2 * pow(std_dev, 2))));
-    return 10 * a * b;
+    return wb->pen_strenght * a * b;
 }
 
 void adjust_points(winbase_t *wb, sfVector2i mouse_pos, float coef)
 {
     int y = wb->coord.y;
     int x = wb->coord.x;
-    wb->height_map[y][x] += coef * gauss(mouse_pos.x - x, mouse_pos.y - y);
+    wb->height_map[y][x] += coef * gauss(wb, mouse_pos.x - x, mouse_pos.y - y);
 }
 
 sfVector2i scale_mouse(sfVector2i mouse_pos, int factor)
@@ -38,8 +38,8 @@ void check_points(winbase_t *wb, sfVector2i mouse_pos, int factor)
     int left_button = sfMouse_isButtonPressed(sfMouseLeft);
     int right_button = sfMouse_isButtonPressed(sfMouseRight);
     mouse_pos = scale_mouse(mouse_pos, factor);
-    for (int y = 1; y < height - 1; y++) {
-        for (int x = 1; x < width - 1; x++) {
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
             wb->coord.y = y;
             wb->coord.x = x;
             adjust_points(wb, mouse_pos, left_button - right_button);

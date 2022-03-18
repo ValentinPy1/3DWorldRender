@@ -83,6 +83,8 @@ typedef struct winbase_s {
     sfMusic *music;
     menu_t menu;
     sfFont *font;
+    float pen_size;
+    float pen_strenght;
 } winbase_t;
 
 sfVector2f scale_point(winbase_t *wb, sfVector2f **map, int y, int x);

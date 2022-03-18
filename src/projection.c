@@ -10,12 +10,10 @@
 sfVector2f scale_point(winbase_t *wb, sfVector2f **map, int y, int x)
 {
     sfVector2f scaledpoint;
-
     scaledpoint.x = map[y][x].x * wb->world.size /
     wb->world.dim.x + wb->world.pos.x;
     scaledpoint.y = map[y][x].y * wb->world.size /
     wb->world.dim.y + wb->world.pos.y;
-
     return scaledpoint;
 }
 

@@ -56,6 +56,18 @@ void size_input(winbase_t *wb)
         case (sfKeyM):
             wb->world.size /= 1.03;
             break;
+        case (sfKeyU):
+            wb->pen_size *= 1.05;
+            break;
+        case (sfKeyJ):
+            wb->pen_size /= 1.05;
+            break;
+        case (sfKeyI):
+            wb->pen_strenght += 0.5;
+            break;
+        case (sfKeyK):
+            wb->pen_strenght -= 0.5;
+            break;
         default:
             break;
     }

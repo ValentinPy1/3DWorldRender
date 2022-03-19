@@ -57,7 +57,7 @@ void save(winbase_t *wb, const char *filepath)
 {
     int fd;
     char *buffer;
-    
+
     fd = open_file(filepath);
     write_map_size(wb, fd);
     for (int y = 0; y < wb->world.dim.y; ++y) {

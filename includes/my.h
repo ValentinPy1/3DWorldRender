@@ -15,7 +15,7 @@
     #include <stdlib.h>
     #include <unistd.h>
 char *basestr(int nb, int base);
-int my_atoi(char const *str);
+int my_atoi(const char *str);
 char *my_getstr(int nb);
 int my_is_prime(int nb);
 int my_power(int nb, int power);

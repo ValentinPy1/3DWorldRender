@@ -21,6 +21,7 @@ SRC	=	$(SRCPATH)main.c	\
 		$(SRCPATH)mousedrag.c	\
 		$(SRCPATH)get_digits.c	\
 		$(SRCPATH)save.c	\
+		$(SRCPATH)load.c	\
 
 NAME	=	my_world
 

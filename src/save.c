@@ -12,16 +12,9 @@
 void write_file(winbase_t *wb, int fd, int y, int x)
 {
     char *buffer;
-    char space[1] = " ";
     char ret[1] = "\n";
     int value = wb->height_map[y][x] * 10;
 
-    buffer = my_getstr(y);
-    write(fd, buffer, get_digits(y));
-    write(fd, space, 1);
-    buffer = my_getstr(x);
-    write(fd, buffer, get_digits(x));
-    write(fd, space, 1);
     buffer = my_getstr(value);
     write(fd, buffer, get_digits(value));
     write(fd, ret, 1);

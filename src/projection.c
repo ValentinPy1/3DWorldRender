@@ -22,7 +22,7 @@ sfVector2f project_point(sfVector3f point_3d, sfVector2f angle)
     sfVector2f point_2d;
     point_2d.x = cos(angle.x) * point_3d.x - sin(angle.x) * point_3d.y;
     point_2d.y = sin(angle.y) * sin(angle.x) * point_3d.x + sin(angle.y) *\
-    cos(angle.x) * point_3d.y - point_3d.z;
+    cos(angle.x) * point_3d.y - cos(angle.y) * point_3d.z;
     return point_2d;
 }
 

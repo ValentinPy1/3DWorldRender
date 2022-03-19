@@ -88,6 +88,7 @@ typedef struct winbase_s {
     float pen_strenght;
     bool editor;
     sfCircleShape *circle;
+    sfVector2i premousepos;
 } winbase_t;
 
 sfVector2f scale_point(winbase_t *wb, sfVector2f **map, int y, int x);
@@ -121,5 +122,7 @@ void editor(winbase_t *wb);
 void handle_mouse(winbase_t *wb, int factor);
 sfCircleShape *create_circle(void);
 void draw_button(winbase_t *wb, button_t *button);
+void mousedrag(winbase_t *wb);
+void mousescroll(winbase_t *wb);
 
 #endif

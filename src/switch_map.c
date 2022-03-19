@@ -45,6 +45,7 @@ void switch_map(winbase_t *wb)
     for (i = 0; i < 43 * WINFPS / 60.0; i++) {
         update_map(wb, newmap, prop);
         update_colors(wb, colors, prop);
+        mousedrag(wb);
         projmap = project_map(wb);
         if (wb->editor)
             editor(wb);
@@ -81,6 +82,7 @@ void switch_blank(winbase_t *wb)
     float prop = pow(0.95, 60.0 / WINFPS);
     for (i = 0; i < 3 * WINFPS / 60; i++) {
         update_map(wb, newmap, prop);
+        mousedrag(wb);
         projmap = project_map(wb);
         if (wb->editor)
             editor(wb);

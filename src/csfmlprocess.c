@@ -29,7 +29,7 @@ void handle_event(winbase_t *wb)
                 test_buttons(wb);
                 break;
             case (sfEvtMouseWheelMoved):
-                wb->world.size *= pow(1.15, (float)wb->event.mouseWheel.delta);
+                mousescroll(wb);
                 break;
             default:
                 break;
@@ -52,6 +52,7 @@ winbase_t *create_winbase(void)
     wb->pen_strenght = 10;
     wb->editor = false;
     wb->circle = create_circle();
+    wb->premousepos = sfMouse_getPositionRenderWindow(wb->window);
     return wb;
 }
 

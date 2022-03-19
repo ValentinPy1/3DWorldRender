@@ -28,12 +28,17 @@ void launch(void)
 void print_help()
 {
     my_putstr("\nUSAGE:\n");
-    my_putstr("    ARROWS    : move\n");
-    my_putstr("    ZQSD      : change angle\n");
-    my_putstr("    PM        : zoom and unzoom\n");
-    my_putstr("    R         : regenerate a new map\n");
-    my_putstr("    B         : generate blank map\n");
-    my_putstr("    BACKSPACE : close window\n\n");
+    my_putstr("    ARROWS | Left Click   : move\n");
+    my_putstr("    ZQSD | Right Click    : change angle\n");
+    my_putstr("    PM | Mouse Wheel      : zoom and unzoom\n");
+    my_putstr("    R                     : generate a new map\n");
+    my_putstr("    B                     : flatten the map\n");
+    my_putstr("    BACKSPACE             : close window\n");
+    my_putstr("\nEDITOR:\n");
+    my_putstr("    Left Click            : add terrain\n");
+    my_putstr("    Right Click           : remove terrain\n");
+    my_putstr("    UJ | Mouse Wheel      : change pen size\n");
+    my_putstr("    IK                    : change pen strenght\n\n");
 }
 
 int main(int ac, char **av)

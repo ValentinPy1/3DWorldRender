@@ -63,10 +63,10 @@ void size_input(winbase_t *wb)
             wb->pen_size /= 1.05;
             break;
         case (sfKeyI):
-            wb->pen_strenght += 1;
+            wb->pen_strenght *= 1.05;
             break;
         case (sfKeyK):
-            wb->pen_strenght -= 1;
+            wb->pen_strenght /= 1.05;
             break;
         default:
             break;

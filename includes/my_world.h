@@ -124,5 +124,6 @@ sfCircleShape *create_circle(void);
 void draw_button(winbase_t *wb, button_t *button);
 void mousedrag(winbase_t *wb);
 void mousescroll(winbase_t *wb);
+int get_digits(int num);
 
 #endif

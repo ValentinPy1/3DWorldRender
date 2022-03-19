@@ -29,7 +29,7 @@ void write_file(winbase_t *wb, int fd, int y, int x)
 
 void write_map_size(winbase_t *wb, int fd)
 {
-    char * buffer;
+    char *buffer;
     char space[1] = " ";
     char ret[1] = "\n";
 
@@ -49,14 +49,12 @@ int open_file(const char *filepath)
     fd = open(filepath, O_CREAT | O_WRONLY, 0777);
     fp = fopen(filepath, "w");
     fclose(fp);
-
     return fd;
 }
 
 void save(winbase_t *wb, const char *filepath)
 {
     int fd;
-    char *buffer;
 
     fd = open_file(filepath);
     write_map_size(wb, fd);

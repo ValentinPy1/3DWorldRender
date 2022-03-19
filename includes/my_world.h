@@ -115,7 +115,7 @@ void switch_blank(winbase_t *wb);
 button_t setup_button(sfVector2f pos, sfVector2f size, char *file);
 bool is_clicked(winbase_t *wb, button_t *button);
 void test_buttons(winbase_t *wb);
-void display_str(winbase_t *wb, char *str, sfVector2f pos);
+void display_str(winbase_t *wb, char *str, sfVector2f pos, float size);
 void redim_trigger(winbase_t *wb);
 void setup_buttons(winbase_t *wb);
 void editor(winbase_t *wb);

@@ -31,15 +31,14 @@ void setup_buttons(winbase_t *wb)
     (sfVector2f){0.5, 0.5}, "assets/autorota.png");
 }
 
-void display_str(winbase_t *wb, char *str, sfVector2f pos)
+void display_str(winbase_t *wb, char *str, sfVector2f pos, float size)
 {
-    sfVector2f scale = {1.5, 1.5};
     sfText *text = sfText_create();
     sfText_setPosition(text, pos);
     sfText_setString(text, str);
     sfText_setColor(text, sfWhite);
     sfText_setFont(text, wb->font);
-    sfText_setScale(text, scale);
+    sfText_setScale(text, (sfVector2f){size, size});
     sfRenderWindow_drawText(wb->window, text, NULL);
     sfText_destroy(text);
 }

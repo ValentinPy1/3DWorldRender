@@ -49,7 +49,7 @@ winbase_t *create_winbase(void)
     setup_buttons(wb);
     wb->font = sfFont_createFromFile("assets/font.otf");
     wb->pen_size = 10;
-    wb->pen_strenght = 10;
+    wb->pen_strenght = 20;
     wb->editor = false;
     wb->circle = create_circle();
     wb->premousepos = sfMouse_getPositionRenderWindow(wb->window);

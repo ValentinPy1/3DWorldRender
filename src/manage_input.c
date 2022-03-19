@@ -69,7 +69,6 @@ void size_input(winbase_t *wb)
             wb->pen_strenght /= 1.05;
             break;
         default:
-            break;
     }
 }
 

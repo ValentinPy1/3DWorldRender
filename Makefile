@@ -19,6 +19,8 @@ SRC	=	$(SRCPATH)main.c	\
 		$(SRCPATH)redim.c	\
 		$(SRCPATH)editor.c	\
 		$(SRCPATH)mousedrag.c	\
+		$(SRCPATH)get_digits.c	\
+		$(SRCPATH)save.c	\
 
 NAME	=	my_world
 

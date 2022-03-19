@@ -7,20 +7,20 @@
 
 #include "my.h"
 
-int my_atoi(char const *str)
+int my_atoi(const char *str)
 {
-    int len = my_strlen(str);
     int i;
-    int mult = 1;
-    int number = 0;
-    int offset;
+    int res;
+
+    if (str == 0)
+        return 0;
     if (str[0] == '-')
-        offset = 1;
-    else
-        offset = 0;
-    for (i = len - 1; i >= offset; i--) {
-        number += (str[i] - 48) * mult;
-        mult *= 10;
+        return (-my_atoi(str + 1));
+    i = 0;
+    res = 0;
+    while (str[i] >= '0' && str[i] <= '9' && str[i]) {
+        res = res * 10 + str[i] - '0';
+        i++;
     }
-    return (-1 * number * (2 * offset - 1));
+    return (res);
 }

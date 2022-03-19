@@ -81,6 +81,7 @@ void editor(winbase_t *wb)
     editor_y_lines(wb, factor);
     handle_mouse(wb, factor);
     sfCircleShape_setRadius(wb->circle, rad);
-    sfCircleShape_setPosition(wb->circle, (sfVector2f){mouse_pos.x - rad, mouse_pos.y - rad});
+    sfCircleShape_setPosition(wb->circle, (sfVector2f)\
+    {mouse_pos.x - rad, mouse_pos.y - rad});
     sfRenderWindow_drawCircleShape(wb->window, wb->circle, NULL);
 }

@@ -19,8 +19,8 @@ void mousescroll(winbase_t *wb)
 void mousedrag(winbase_t *wb)
 {
     sfVector2i mousepos = sfMouse_getPositionRenderWindow(wb->window);
-    sfVector2i delta = {mousepos.x - wb->premousepos.x,\
-     mousepos.y - wb->premousepos.y};
+    sfVector2i delta = {mousepos.x - wb->premousepos.x, \
+    mousepos.y - wb->premousepos.y};
     if (!wb->editor) {
         if (sfMouse_isButtonPressed(sfMouseLeft)) {
             wb->world.pos.x += delta.x;

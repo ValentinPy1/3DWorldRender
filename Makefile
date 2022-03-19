@@ -18,6 +18,7 @@ SRC	=	$(SRCPATH)main.c	\
 		$(SRCPATH)handlebutton.c	\
 		$(SRCPATH)redim.c	\
 		$(SRCPATH)editor.c	\
+		$(SRCPATH)mousedrag.c	\
 
 NAME	=	my_world
 

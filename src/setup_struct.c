@@ -54,7 +54,9 @@ button_t setup_button(sfVector2f pos, sfVector2f size, char *file)
     sfSprite_setTexture(button.sprite, button.texture, sfFalse);
     button.pos = pos;
     textsize = sfTexture_getSize(button.texture);
+    button.scale = size;
     button.size = (sfVector2f){size.x * textsize.x, size.y * textsize.y};
+    sfSprite_setOrigin(button.sprite, (sfVector2f){button.size.x / 2, button.size.y / 2});
     sfSprite_setScale(button.sprite, size);
     sfSprite_setPosition(button.sprite, pos);
     return button;

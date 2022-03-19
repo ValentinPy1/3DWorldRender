@@ -27,6 +27,7 @@ typedef struct button_s {
     sfTexture *texture;
     sfVector2f pos;
     sfVector2f size;
+    sfVector2f scale;
 } button_t;
 
 typedef struct slider_s {
@@ -94,7 +95,7 @@ winbase_t *create_winbase(void);
 void handle_event(winbase_t *);
 sfRenderWindow *create_window(void);
 void destroy_winbase(winbase_t *);
-void draw_all(winbase_t *, sfVector2f **, char *);
+void draw_all(winbase_t *, sfVector2f **);
 double **setup_map(int, int);
 void draw_x_lines(winbase_t *, sfVector2f **);
 void draw_y_lines(winbase_t *, sfVector2f **);
@@ -113,11 +114,12 @@ void switch_blank(winbase_t *wb);
 button_t setup_button(sfVector2f pos, sfVector2f size, char *file);
 bool is_clicked(winbase_t *wb, button_t *button);
 void test_buttons(winbase_t *wb);
-void display_str(winbase_t *wb, char *str);
+void display_str(winbase_t *wb, char *str, sfVector2f pos);
 void redim_trigger(winbase_t *wb);
 void setup_buttons(winbase_t *wb);
 void editor(winbase_t *wb);
 void handle_mouse(winbase_t *wb, int factor);
 sfCircleShape *create_circle(void);
+void draw_button(winbase_t *wb, button_t *button);
 
 #endif

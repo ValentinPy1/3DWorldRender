@@ -55,7 +55,8 @@ char *get_redim_text(winbase_t *wb)
         if (i == -1)
             break;
         projmap = project_map(wb);
-        draw_all(wb, projmap, text);
+        display_str(wb, text, (sfVector2f){100, 90});
+        draw_all(wb, projmap);
         destroy_projmap(&wb->world.dim, projmap);
     }
     return text;

@@ -14,7 +14,7 @@ void launch(void)
     play_music(wb);
     while (sfRenderWindow_isOpen(wb->window)) {
         projmap = project_map(wb);
-        draw_all(wb, projmap, "");
+        draw_all(wb, projmap);
         destroy_projmap(&wb->world.dim, projmap);
         handle_event(wb);
         wb->world.angle.x += wb->world.rota;

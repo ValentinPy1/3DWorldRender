@@ -48,7 +48,7 @@ void switch_map(winbase_t *wb)
         projmap = project_map(wb);
         if (wb->editor)
             editor(wb);
-        draw_all(wb, projmap, "");
+        draw_all(wb, projmap);
         destroy_projmap(&wb->world.dim, projmap);
         wb->world.angle.x += wb->world.rota;
         handle_event(wb);
@@ -84,7 +84,7 @@ void switch_blank(winbase_t *wb)
         projmap = project_map(wb);
         if (wb->editor)
             editor(wb);
-        draw_all(wb, projmap, "");
+        draw_all(wb, projmap);
         destroy_projmap(&wb->world.dim, projmap);
         wb->world.angle.x += wb->world.rota;
         handle_event(wb);

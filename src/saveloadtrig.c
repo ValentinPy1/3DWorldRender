@@ -60,9 +60,11 @@ char *get_file_name(winbase_t *wb)
         draw_all(wb, projmap);
         destroy_projmap(&wb->world.dim, projmap);
     }
-    withextent = my_strcat(text, ".txt");
+    withextent = my_strcat(text, ".world");
     free(text);
-    return withextent;
+    text = my_strcat("saves/" ,withextent);
+    free(withextent);
+    return text;
 }
 
 void save_trigger(winbase_t *wb)

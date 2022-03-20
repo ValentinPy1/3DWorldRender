@@ -17,7 +17,7 @@ sfRenderWindow *create_window(void)
 
 void handle_event(winbase_t *wb)
 {
-    while (sfRenderWindow_pollEvent(wb->window, &wb->event)) {
+    while (sfRenderWindow_pollEvent(wb->window, &wb->event))
         switch (wb->event.type) {
             case (sfEvtClosed):
                 sfRenderWindow_close(wb->window);
@@ -34,7 +34,6 @@ void handle_event(winbase_t *wb)
             default:
                 break;
         }
-    }
 }
 
 winbase_t *create_winbase(void)

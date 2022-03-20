@@ -14,7 +14,7 @@ int get_digits(int num)
             r++;
         }
     } else {
-        while (num < -9) {
+        while (num < 0 - 9) {
             num /= 10;
             r++;
         }

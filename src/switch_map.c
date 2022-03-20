@@ -42,7 +42,7 @@ void switch_map(winbase_t *wb)
     double **newmap = setup_map(wb->world.dim.x, wb->world.dim.y);;
     w_colors_t colors = setup_color();
     float prop = pow(0.95, (60.0 / (float)WINFPS));
-    for (i = 0; i < 43 * WINFPS / 60.0; i++) {
+    for (i = 0; i < 46 * WINFPS / 60.0; i++) {
         update_map(wb, newmap, prop);
         update_colors(wb, colors, prop);
         mousedrag(wb);
@@ -66,9 +66,8 @@ double **setup_blankmap(int width, int height)
     int x;
     for (y = 0; y < height; y++) {
         map[y] = malloc(width * sizeof(double));
-        for (x = 0; x < width; x++) {
+        for (x = 0; x < width; x++)
             map[y][x] = 0;
-        }
     }
     map[y] = NULL;
     return map;

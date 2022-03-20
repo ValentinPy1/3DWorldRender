@@ -85,7 +85,7 @@ void reset_input(winbase_t *wb)
             sfRenderWindow_close(wb->window);
             break;
         case sfKeyH:
-            wb->menu.draw *= -1;
+            wb->menu.draw *= 0 - 1;
             break;
         case sfKeyE:
             wb->editor = 1 - wb->editor;

@@ -21,7 +21,7 @@ int input_alpha(winbase_t *wb)
 void spe_event_sl(winbase_t *wb, char *text, int *i)
 {
     int my_char;
-    while (sfRenderWindow_pollEvent(wb->window, &wb->event)) {
+    while (sfRenderWindow_pollEvent(wb->window, &wb->event))
         switch (wb->event.type) {
             case (sfEvtClosed):
                 sfRenderWindow_close(wb->window);
@@ -33,15 +33,11 @@ void spe_event_sl(winbase_t *wb, char *text, int *i)
                     *i += 1;
                     text[*i] = 0;
                 }
-                if (my_char == -2 || *i > 99) {
+                if (my_char == -2 || *i > 99)
                     *i = -1;
-                    return;
-                }
                 break;
             default:
-                break;
         }
-    }
 }
 
 char *get_file_name(winbase_t *wb)
@@ -60,7 +56,7 @@ char *get_file_name(winbase_t *wb)
         draw_all(wb, projmap);
         destroy_projmap(&wb->world.dim, projmap);
     }
-    withextent = my_strcat(text, ".world");
+    withextent = my_strcat(text, ".wrld");
     free(text);
     text = my_strcat("saves/" ,withextent);
     free(withextent);

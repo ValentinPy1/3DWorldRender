@@ -25,7 +25,7 @@ void launch(void)
     destroy_winbase(wb);
 }
 
-void print_help()
+void print_help(void)
 {
     my_putstr("\nUSAGE:\n");
     my_putstr("    ARROWS | Left Click   : move\n");

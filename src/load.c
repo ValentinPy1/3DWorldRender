@@ -69,4 +69,6 @@ void load(winbase_t *wb, const char *filepath)
             getline(&buffer, &line_buf_size, fp);
             load_file(wb, buffer, y, x);
         }
+    wb->height_map[wb->world.dim.y - 1][wb->world.dim.x - 1] = wb->height_map
+    [wb->world.dim.y - 2][wb->world.dim.x - 1];
 }

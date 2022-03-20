@@ -74,3 +74,15 @@ void redim_trigger(winbase_t *wb)
     free(str_x);
     free(str_y);
 }
+
+void display_str(winbase_t *wb, char *str, sfVector2f pos, float size)
+{
+    sfText *text = sfText_create();
+    sfText_setPosition(text, pos);
+    sfText_setString(text, str);
+    sfText_setColor(text, sfWhite);
+    sfText_setFont(text, wb->font);
+    sfText_setScale(text, (sfVector2f){size, size});
+    sfRenderWindow_drawText(wb->window, text, NULL);
+    sfText_destroy(text);
+}

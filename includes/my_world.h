@@ -73,6 +73,8 @@ typedef struct menu_s {
     button_t flatten;
     button_t redim;
     button_t auto_rota;
+    button_t save;
+    button_t load;
 } menu_t;
 
 typedef struct winbase_s {
@@ -125,5 +127,9 @@ void draw_button(winbase_t *wb, button_t *button);
 void mousedrag(winbase_t *wb);
 void mousescroll(winbase_t *wb);
 int get_digits(int num);
+void save_trigger(winbase_t *wb);
+void load_trigger(winbase_t *wb);
+void load(winbase_t *wb, const char *filepath);
+void save(winbase_t *wb, const char *filepath);
 
 #endif

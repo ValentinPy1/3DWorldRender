@@ -76,6 +76,8 @@ void draw_all(winbase_t *wb, sfVector2f **map)
         draw_button(wb, &wb->menu.flatten);
         draw_button(wb, &wb->menu.redim);
         draw_button(wb, &wb->menu.auto_rota);
+        draw_button(wb, &wb->menu.save);
+        draw_button(wb, &wb->menu.load);
     }
     sfRenderWindow_display(wb->window);
     sfRenderWindow_clear(wb->window, sfBlack);

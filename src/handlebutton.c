@@ -9,11 +9,15 @@
 
 void test_buttons(winbase_t *wb)
 {
-    if (is_clicked(wb, &wb->menu.flatten)) {
+    if (is_clicked(wb, &wb->menu.flatten))
         switch_blank(wb);
-    } else if (is_clicked(wb, &wb->menu.redim)) {
+    if (is_clicked(wb, &wb->menu.redim))
         redim_trigger(wb);
-    } else if (is_clicked(wb, &wb->menu.auto_rota)) {
+    if (is_clicked(wb, &wb->menu.save))
+        save_trigger(wb);
+    if (is_clicked(wb, &wb->menu.load))
+        load_trigger(wb);
+    if (is_clicked(wb, &wb->menu.auto_rota)) {
         if (wb->event.mouseButton.button == sfMouseLeft)
             wb->world.rota += 0.2 * 60 / WINFPS;
         if (wb->event.mouseButton.button == sfMouseRight)
@@ -23,24 +27,17 @@ void test_buttons(winbase_t *wb)
 
 void setup_buttons(winbase_t *wb)
 {
+    sfVector2f scale = {0.5, 0.5};
     wb->menu.flatten = setup_button((sfVector2f){1750, 60},\
-    (sfVector2f){0.5, 0.5}, "assets/flattenmap.png");
+    scale, "assets/flattenmap.png");
     wb->menu.redim = setup_button((sfVector2f){1750, 120},\
-    (sfVector2f){0.5, 0.5}, "assets/redimension.png");
+    scale, "assets/redimension.png");
     wb->menu.auto_rota = setup_button((sfVector2f){1750, 180},\
-    (sfVector2f){0.5, 0.5}, "assets/autorota.png");
-}
-
-void display_str(winbase_t *wb, char *str, sfVector2f pos, float size)
-{
-    sfText *text = sfText_create();
-    sfText_setPosition(text, pos);
-    sfText_setString(text, str);
-    sfText_setColor(text, sfWhite);
-    sfText_setFont(text, wb->font);
-    sfText_setScale(text, (sfVector2f){size, size});
-    sfRenderWindow_drawText(wb->window, text, NULL);
-    sfText_destroy(text);
+    scale, "assets/autorota.png");
+    wb->menu.save = setup_button((sfVector2f){1750, 940},\
+    scale, "assets/save.png");
+    wb->menu.load = setup_button((sfVector2f){1750, 1000},\
+    scale, "assets/load.png");
 }
 
 void draw_button(winbase_t *wb, button_t *button)

@@ -44,22 +44,32 @@ void load_file(winbase_t *wb, const char *buffer, int y, int x)
     wb->height_map[y][x] = value;
 }
 
+void destroy_heightmap(winbase_t *wb)
+{
+    int i;
+    for (i = 0; i < wb->world.dim.y; i++) {
+        free(wb->height_map[i]);
+    }
+    free(wb->height_map);
+}
+
 void load(winbase_t *wb, const char *filepath)
 {
     FILE *fp;
-    ssize_t line_size;
     char *buffer = NULL;
     size_t line_buf_size = 0;
-
+    int x;
+    int y;
     fp = fopen(filepath, "r");
     if (!fp)
         return;
-    line_size = getline(&buffer, &line_buf_size, fp);
+    getline(&buffer, &line_buf_size, fp);
     get_dimensions(wb, buffer);
-
-    for (int y = 0; y < wb->world.dim.y; y++) {
-        for (int x = 0; x < wb->world.dim.x; x++) {
-            line_size = getline(&buffer, &line_buf_size, fp);
+    destroy_heightmap(wb);
+    wb->height_map = setup_map(wb->world.dim.x, wb->world.dim.y);
+    for (y = 0; y < wb->world.dim.y; y++) {
+        for (x = 0; x < wb->world.dim.x; x++) {
+            getline(&buffer, &line_buf_size, fp);
             load_file(wb, buffer, y, x);
         }
     }

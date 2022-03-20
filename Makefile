@@ -22,6 +22,7 @@ SRC	=	$(SRCPATH)main.c	\
 		$(SRCPATH)get_digits.c	\
 		$(SRCPATH)save.c	\
 		$(SRCPATH)load.c	\
+		$(SRCPATH)saveloadtrig.c	\
 
 NAME	=	my_world
 

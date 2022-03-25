@@ -73,7 +73,7 @@ double **setup_map(int width, int height)
     for (y = 0; y < height; y++) {
         map[y] = malloc(width * sizeof(double));
         for (x = 0; x < width; x++)
-            map[y][x] = calc_sinlist(x_sin, y_sin, x, y)\
+            map[y][x] = calc_sinlist(x_sin, y_sin, x, y)
             + (rdm() - rdm()) / 2;
     }
     free(x_sin);

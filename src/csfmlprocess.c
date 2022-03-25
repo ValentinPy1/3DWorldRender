@@ -11,7 +11,7 @@ sfRenderWindow *create_window(void)
 {
     sfVideoMode mode = {WINWIDTH, WINHEIGHT, WINBPP};
     const char *title = "my_world";
-    return sfRenderWindow_create(mode, title,\
+    return sfRenderWindow_create(mode, title,
     sfClose | sfResize | sfFullscreen, NULL);
 }
 

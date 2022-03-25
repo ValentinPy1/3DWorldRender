@@ -28,7 +28,8 @@ NAME	=	my_world
 
 CPPFLAGS	=	-I includes/
 
-LDFLAGS	=	-L lib/ -lmy -lm -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -lm
+LDFLAGS	=	-L lib/ -lmy -lm -lcsfml-graphics -lcsfml-window \
+			-lcsfml-system -lcsfml-audio -lm
 
 LIBPATH	=	lib/my/
 

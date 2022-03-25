@@ -13,7 +13,7 @@ void update_map(winbase_t *wb, double **height_map, float prop)
     int x;
     for (y = 0; y < wb->world.dim.y; y++) {
         for (x = 0; x < wb->world.dim.x; x++) {
-            wb->height_map[y][x] = wb->height_map[y][x] *\
+            wb->height_map[y][x] = wb->height_map[y][x] *
             prop + height_map[y][x] * (1 - prop);
         }
     }
@@ -21,17 +21,17 @@ void update_map(winbase_t *wb, double **height_map, float prop)
 
 void update_colors(winbase_t *wb, w_colors_t colors, float prop)
 {
-    wb->world.colors.high.r = wb->world.colors.high.r *\
+    wb->world.colors.high.r = wb->world.colors.high.r *
     prop + colors.high.r * (1 - prop);
-    wb->world.colors.high.g = wb->world.colors.high.g *\
+    wb->world.colors.high.g = wb->world.colors.high.g *
     prop + colors.high.g * (1 - prop);
-    wb->world.colors.high.b = wb->world.colors.high.b *\
+    wb->world.colors.high.b = wb->world.colors.high.b *
     prop + colors.high.b * (1 - prop);
-    wb->world.colors.low.r = wb->world.colors.low.r *\
+    wb->world.colors.low.r = wb->world.colors.low.r *
     prop + colors.low.r * (1 - prop);
-    wb->world.colors.low.g = wb->world.colors.low.g *\
+    wb->world.colors.low.g = wb->world.colors.low.g *
     prop + colors.low.g * (1 - prop);
-    wb->world.colors.low.b = wb->world.colors.low.b *\
+    wb->world.colors.low.b = wb->world.colors.low.b *
     prop + colors.low.b * (1 - prop);
 }
 

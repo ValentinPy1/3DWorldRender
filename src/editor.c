@@ -78,8 +78,8 @@ void editor(winbase_t *wb)
     float rad = wb->pen_size * 5;
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(wb->window);
     char *pen_str = my_getstr(wb->pen_strenght);
-    display_str(wb, "Pen Strength", (sfVector2f){820, 30}, 0.8);
-    display_str(wb, pen_str, (sfVector2f){820, 70}, 0.8);
+    display_str(wb, "Pen Strength", (sfVector2f) {820, 30}, 0.8);
+    display_str(wb, pen_str, (sfVector2f) {820, 70}, 0.8);
     editor_x_lines(wb, factor);
     editor_y_lines(wb, factor);
     handle_mouse(wb, factor);

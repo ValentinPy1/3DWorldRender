@@ -10,16 +10,16 @@
 void mousescroll(winbase_t *wb)
 {
     if (wb->editor) {
-        wb->pen_size /= pow(1.15, (float)wb->event.mouseWheel.delta);
+        wb->pen_size /= pow(1.15, (float) wb->event.mouseWheel.delta);
     } else {
-        wb->world.size *= pow(1.15, (float)wb->event.mouseWheel.delta);
+        wb->world.size *= pow(1.15, (float) wb->event.mouseWheel.delta);
     }
 }
 
 void mousedrag(winbase_t *wb)
 {
     sfVector2i mousepos = sfMouse_getPositionRenderWindow(wb->window);
-    sfVector2i delta = {mousepos.x - wb->premousepos.x, \
+    sfVector2i delta = {mousepos.x - wb->premousepos.x,
     mousepos.y - wb->premousepos.y};
     if (!wb->editor) {
         if (sfMouse_isButtonPressed(sfMouseLeft)) {

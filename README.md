@@ -1,7 +1,6 @@
-
 **My World: A 2D Height Map Editor with Synthwave Graphics and Music**
 
-<img src="./image/README/1685622170950.png">
+<img src="./image/README/basic.png">
 
 **Overview**
 My World is a program designed for generating, editing, and rendering 2D height maps in 3D, featuring stunning synthwave graphics and music. This README provides instructions on how to run the project and navigate through the program's various functionalities.
@@ -27,7 +26,8 @@ The program provides multiple control options for ease of use. You can choose be
 **Editor Mode**
 Press the [E] key to enter the editor mode. In this mode, you can modify the terrain using the following controls:
 
-![1685622186676](https://file+.vscode-resource.vscode-cdn.net/home/vpy/delivery/mes_repo_github/World/image/README/1685622186676.png)
+<img src="./image/README/edition.png">
+
 
 * Terrain Editing:
   * Left-click: Increase the terrain height.
@@ -58,4 +58,6 @@ Various menu options are available for customizing the program's appearance and 
 
 **Enjoy exploring your synthwave-inspired 3D height maps in My World!**
 
-![1685622181892](https://file+.vscode-resource.vscode-cdn.net/home/vpy/delivery/mes_repo_github/World/image/README/1685622181892.png)
+<img src="./image/README/volcano.png">
+
+<img src="./image/README/large.png">

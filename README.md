@@ -1,7 +1,7 @@
 
 **My World: A 2D Height Map Editor with Synthwave Graphics and Music**
 
-![1685622188998](https://file+.vscode-resource.vscode-cdn.net/home/vpy/delivery/mes_repo_github/World/image/README/1685622188998.png)
+<img src="./image/README/1685622170950.png">
 
 **Overview**
 My World is a program designed for generating, editing, and rendering 2D height maps in 3D, featuring stunning synthwave graphics and music. This README provides instructions on how to run the project and navigate through the program's various functionalities.
